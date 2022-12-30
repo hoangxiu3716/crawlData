@@ -1,0 +1,63 @@
+		<div class="progress_line"  ng-class="{progress_line_border : inProcess > 7}">
+		<fieldset class="ibox-content-with-line"   id="uploadFileArea"  ng-show="inProcess > 6">
+				<i ng-class="inProcess === 7 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#uploadFileAreaContent')">Übermittlung von Fotos und Dokumenten (optional)</label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding none-display" for="name" id="uploadFileAreaContentState" ng-click="showHideElement('#uploadFileAreaContent')" >Angaben &#228;ndern</label>
+				<label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#uploadFileAreaContent')">Gerne beschleunigen wir Ihre Regulierung mit aussagekräftigen Bildern und einem Kostenvoranschlag/Rechnung</label>
+				<fieldset class="custom-customer-area padding-10 col-sm-12"  id="uploadFileAreaContent">
+					
+					<fieldset class="border-area" >
+						<section class="col-sm-12 no-padding-left-right " >
+							<div class="alert alert-info " ng-hide="hideGlas || unfall.onlyForeignCar" >
+									<label class="control-label " for="name" >Liegt Ihnen schon ein Kostenvoranschlag/Rechnung vor, laden Sie bitte die Datei/Foto hoch.</label>
+									<label class="control-label " for="name" >Wenn	Sie	eine	schnelle	Regulierung	wünschen,	fotografieren	Sie	bitte	wie	folgt:</label>
+									<ul>
+										<li>Ihren	Fahrzeugschein</li>
+										<li>Fahrzeug von schräg vorne</li>
+										<li>Fahrzeug von schräg hinten</li>
+										<li>Detaillierte Schadenfotos</li>
+									</ul>
+							</div>
+							<div class="alert alert-info " ng-hide="!hideGlas" >
+									<label class="control-label " for="name" >Liegt	Ihnen	schon	ein	Kostenvoranschlag/Rechnung	vor,	laden	Sie	bitte	die	Datei/Foto	hoch.	
+									Wenn	Sie	eine	schnelle	Regulierung	wünschen,	fotografieren	Sie	bitte	Ihr	Fahrzeug	von	vorne	mit	
+									Kennzeichen	und	der	beschädigten	Scheibe.</label>
+							</div>
+							<div class="alert alert-info " ng-hide="!unfall.onlyForeignCar" >
+									<label class="control-label " for="name" >Liegen	Ihnen	schon	Lichtbilder	bzw.	sonstige	Dokumente	des	beschädigten	Fahrzeuges	vor,	laden	Sie	bitte	die	Datei/Foto hoch.</label>
+							</div>
+
+						</section>
+						<section class="col-sm-12 padding-left-right-9 " ng-if="selectedFiles.length >0">
+			                        	<div ng-include  src="'partials/webassistant/files.html'"></div>
+			                        </section>
+						<section class=" col-sm-12 no-padding-left-right">
+								
+							    <div class="">
+							    	<!-- span input-group input-group-lg class="input-group-btn "> <button class="btn btn-success no-margin no-border-no-radius height-70 font-size-12 margin-left-10" ng-disabled="selectedFiles.length == 0" type="button" ng-click ="uploadAndZipFile()" ><i class="fa fa-upload" aria-hidden="true"></i>  Dateien hochladen</button></span> -->
+								
+										<div ngf-drop="onFileSelect($files)" ngf-select="onFileSelect($files)" ng-model="files" class="drop-box pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true" 
+									        accept="image/jpeg, image/jpg, image/png,application/pdf"><span> <i class="fa fa-plus" aria-hidden="true"></i>  Hinzufügen Schadenfotos und Dokumente</span>
+							        	
+							        </div>
+							    <div ngf-no-file-drop>Drag & Drop für Dateien wird von Ihrem Browser nicht unterstützt.</div>
+												</div>
+						</section>
+						
+					</fieldset>
+				
+				
+				    <section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess != 7">
+						<button type="submit" value=""  class="btn btn-primary  no-margin "   ng-click="showHideElement('#detailsVehicleAreaContent')"><i class='fa fa-angle-up'></i> Angaben	ändern</button>
+						<button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="showHideElement('#contactsAreaContent')">Weiter <i class='fa fa-angle-double-right'></i> </button>
+	                 </section>
+				
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess == 7">
+					<button type="submit" value=""  class="btn btn-primary  no-margin "  ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+					<button type="submit" value=""  class="btn btn-primary  no-margin "   ng-click="showHideElement('#detailsVehicleAreaContent')"><i class='fa fa-angle-up'></i> Angaben	ändern</button>
+                    <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToContacts()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                </section>
+			</fieldset>
+			</div>

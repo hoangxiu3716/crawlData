@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-lg-12 ">
+	<form class="smart-form border-1" id="form" name="form" ng-show="addArea">
+		
+			<div class="ibox-title">
+					<h5>Teams</h5>
+                </div>
+			<fieldset class="ibox-content" >
+				<fieldset class="custom-customer-area padding-10">
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">Flashscore: * </label>
+					<div class="col-lg-8">
+                        <input id="nameOnFlashscore" class="form-control" required="required" placeholder="Flashscore" ng-model="info.nameOnFlashscore"/>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">Wettportal: * </label>
+					<div class="col-lg-8">
+                        <input id="name" class="form-control" required="required" placeholder="Wettportal" ng-model="info.nameOnWettportal"/>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">Code: </label>
+					<div class="col-lg-8">
+                        <input id="name" class="form-control" ng-model="info.code" placeholder="Code"/>
+					</div>
+				</section>
+				</fieldset>
+				<footer class=" col-lg-10 no-boder padding-top-20 padding-bottom-20  " >
+		            	<input type="submit" value="Speichern" ng-if="!edit" class="btn btn-primary pull-right" ng-disabled="form.$invalid" ng-click="save()"/>
+			            <input type="submit" value="Aktualisierung" ng-if="edit" class="btn btn-success pull-right" ng-disabled="form.$invalid" ng-click="update()"/>
+			            <input type="button" value="Abbrechen" class="btn pull-right" ng-click="resetForm()"/>
+				</footer>
+			</fieldset>
+		</form>
+		</div>
+		<div ng-include src="'partials/teams/list.html'"></div>	
+	</div>
+

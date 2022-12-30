@@ -1,0 +1,47 @@
+		<div class="progress_line" ng-class="{progress_line_border : inProcess > 4}">
+		<fieldset class="ibox-content-with-line"  id="accidentArea"  ng-show="inProcess > 3.5"   >
+				<i ng-class="inProcess === 4 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Angaben zu Ihrer Person </label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Angaben &#228;ndern</label>
+				<!-- label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Was ist Ihnen passiert?</label> -->
+				<fieldset class="custom-customer-area padding-10 col-sm-12" id="accidentAreaContent">
+				<fieldset class="border-area">				
+					<section class="col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Name*</label>
+						<div class="col-sm-8">
+		                        <input id="name" class="form-control" placeholder="Name" ng-model="info.name"/>
+						</div>
+					</section>
+					<section class="col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Vorname*</label>
+						<div class="col-sm-8">
+		                        <input id="name" class="form-control" placeholder="Vorname" ng-model="info.forename"/>
+						</div>
+					</section>
+					
+					
+					<section class="col-lg-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Kennzeichen Ihres Autos</label>
+							<div class="col-sm-8">
+                        		<input id="name" class="form-control"  placeholder="Kennzeichen Ihres Autos" uppercased    ng-model="info.characteristicsYourCar"/>
+                        	</div>
+                        </section>
+                      <section class="col-sm-12 no-padding-left-right" >
+							<label class="control-label col-sm-4" for="name">Kilometerstand</label>
+							<div class="col-sm-8">
+			                        <input id="name"  class="form-control" type="number"  placeholder="Kilometerstand " ng-model="info.mileage"/>
+							</div>
+						</section>
+				</fieldset>
+				Alle mit * gekennzeichneten	Felder sind	Pflichtfelder
+				<section class="col-lg-12 no-padding-left-right padding-top18"  ng-show="inProcess != 4">
+						<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="showHideElement('#accidentNeinAreaContent')" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        	   <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToInfoVehicle()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                        </section>
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top18"  ng-show="inProcess == 4">
+						<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="showHideElement('#accidentNeinAreaContent')" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        	   <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToInfoVehicle()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                        </section>
+			</fieldset>
+	</div>

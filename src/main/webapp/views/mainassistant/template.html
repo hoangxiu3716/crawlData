@@ -1,0 +1,34 @@
+
+<div class="homepage  height-100-percent">
+
+    <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="">
+                    <div class="col-sm-6 col-xs-4">
+                        <a class="navbar-brand " href="#"><img src="images/mainlogo.png" alt="logo" class="logo-admiral"></a>
+                    </div>
+                     <ul class="nav navbar-top-links navbar-right">
+         	
+			            <li>
+			                <a  ng-show="user" ng-click="logoutAssistant()" id="logout-button">
+			                    <i class="fa fa-sign-out"></i> Abmelden</span> 
+			                </a>
+			                <a    ng-show="!user && needReload" ng-click="reloadPage()" id="reloadPage-button">
+			                    <i class="fa fa-sign-out"></i> Abmelden</span> 
+			                </a>
+			            </li>
+			        </ul>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        
+		
+    </header><!--/header-->
+
+     <div ui-view></div>
+     
+
+
+</div>

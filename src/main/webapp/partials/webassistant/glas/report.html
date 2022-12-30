@@ -1,0 +1,215 @@
+<div class="progress_line">	
+		<fieldset class="ibox-content-with-line"  id="reportArea"  ng-if="inProcess > 8" >
+				<i ng-class="inProcess === 9 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-12 title-color cursor-default  no-padding" for="name">Zusammenfassung</label>
+				<label class="control-label col-sm-12 sub-title-color cursor-default no-padding" for="name">Bitte überprüfen Sie nochmals Ihre angegebenen Daten zur Schadenmeldung auf Vollständigkeit</label>
+				<fieldset class="custom-customer-area padding-10" id="htmlSaveFile">
+					<label class="control-label col-sm-12" for="name">Persönliche Daten</label>
+					<fieldset class="border-area">
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Versicherungsscheinnummer:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.policyNumber}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Amtliches Kennzeichen:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.licencePlateNumber}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right none-display ">
+							<label class="control-label col-sm-4" for="name">VN:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{customer.lastName}}, {{customer.firstName}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right none-display ">
+							<label class="control-label col-sm-4" for="name">VN-Adresse: </label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{customer.street}}, {{customer.zip}} {{customer.city}}</label>
+					        </div>
+						</section>	
+					</fieldset>
+					<label class="control-label col-sm-12" for="name">Angaben zum Unfallgeschehen</label>
+					<fieldset class="border-area">
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Schadentag:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="info.dayOfAccidentUnknow">unbekannt </label>
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="!info.dayOfAccidentUnknow && (info.dayOfAccident || info.timeOfAccident)">{{info.dayOfAccident | date : 'dd.MM.yyyy'}} {{info.timeOfAccident}} Uhr </label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Schadenort:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="info.street">{{info.street}} <span class="none-display" > , </span> </label>
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="info.postCode || info.city">{{info.postCode}} <span class="none-display" ng-if="info.postCode" > , </span>  {{info.city}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Umgebung des Schadens:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="info.environment">{{info.environment}} </label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Schadenart:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="info.claimType">{{info.claimType}} </label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Kilometerstand Fahrzeug:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.kmVehicle ? info.kmVehicle +' km' : ''}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Fahrzeug fahrbereit:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name"> {{info.vehicleReady == 1 ? 'Ja' : 'Nein'}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.vehicleReady ==0">
+							<label class="control-label col-sm-4" for="name">Abschleppdienst ?:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name"> {{info.towingService == 1 ? 'Ja' : 'Nein'}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " >
+							<label class="control-label col-sm-4" for="name">Beschädigung: </label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-repeat="(key,value) in info.whatBeenDamagedItem" ng-if="value"> {{key =='Sonstiges' ? info.whatBeenDamaged : key}} <span class="none-display" ng-if="!$last"> , </span> </label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " >
+							<label class="control-label col-sm-4" for="name">Reparatur durchgeführt:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name"> {{info.repairAlready == 1 ? 'Ja' : 'Nein'}}</label>
+					        </div>
+						</section>
+					</fieldset>
+					<label class="control-label col-sm-12" for="name">Weitere Informationen zum Fahrzeug</label>
+					<fieldset class="border-area">
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Kilometerstand:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.kmVehicle}} km</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Schadenhöhe:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.rateDamage | number :2}}  <i class="fa fa-eur   " aria-hidden="true"></i></label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Nachweis Schadenhöhe:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.damageLevel}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " >
+							<label class="control-label col-sm-4" for="name">Reparatur:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" ng-if="info.werkstattnetz">
+					              	<span class="col-sm-12 no-padding-left-right">{{info.werkstattnetz.name}}<span class="none-display" >, </span></span>
+					              	<span class="col-sm-12 no-padding-left-right">{{info.werkstattnetz.strasse}}<span class="none-display" >, </span></span>
+					              	<span class="col-sm-12 no-padding-left-right">{{info.werkstattnetz.plz}}<span class="none-display" >, </span></span>
+					              	<span class="col-sm-12 no-padding-left-right">{{info.werkstattnetz.ort}}<span class="none-display" >, </span></span>
+					              	<span class="col-sm-12 no-padding-left-right">{{info.werkstattnetz.telefon}}</span>
+					              </label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right  " ng-if="info.workshop  == 1 " >
+							<label class="control-label col-sm-4" for="name">Kontaktaufnahme durch Werkstatt:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name" >Ja</label>
+					        </div>
+						</section>
+					</fieldset>
+					<label class="control-label col-sm-12" for="name">Fotos und Dokumente</label>
+					<fieldset class="border-area">
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Bilder:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{indexOfFile.image}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right ">
+							<label class="control-label col-sm-4" for="name">Dokumente:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{indexOfFile.document}}</label>
+					        </div>
+						</section>	
+					</fieldset>
+					<div ng-if="info.sms || info.email || info.whatsApp ||info.skype || info.faceTime|| info.googleDuo || info.googleHangouts || info.phoneContacts ">
+					<label class="control-label col-sm-12" for="name">Kontaktboard</label>
+					<fieldset class="border-area"  >
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.sms">
+							<label class="control-label col-sm-4" for="name">SMS:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.smsValue}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.email">
+							<label class="control-label col-sm-4" for="name">E-Mail:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.emailValue}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.whatsApp">
+							<label class="control-label col-sm-4" for="name">WhatsApp:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.whatsAppValue}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.skype">
+							<label class="control-label col-sm-4" for="name">Skype:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.skypeValue}}</label>
+					        </div>
+						</section>	
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.faceTime">
+							<label class="control-label col-sm-4" for="name">FaceTime:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.faceTimeValue}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.googleDuo">
+							<label class="control-label col-sm-4" for="name">Google Duo:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.googleDuoValue}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.googleHangouts">
+							<label class="control-label col-sm-4" for="name">Google Hangouts:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.googleHangoutsValue}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " ng-if="info.phoneContacts">
+							<label class="control-label col-sm-4" for="name">Telefon:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.phoneContactsValue}}</label>
+					        </div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " >
+							<label class="control-label col-sm-4" for="name">Am besten zu erreichen:</label>
+							<div class="col-sm-8">
+					              <label class="control-label col-sm-12 font-weight-500" for="name">{{info.monday ? 'Montag':''}} {{info.tuesday ? 'Dienstag':''}}
+					               {{info.wednesday ? 'Mittwoch':''}} {{info.thursday ? 'Donnerstag':''}} {{info.friday ? 'Freitag':''}}</label>
+					               <label class="control-label col-sm-12 font-weight-500" for="name">{{info.fromTime}} <span ng-if="info.fromTime && info.toTime "> - </span> {{info.toTime}} <span ng-if="info.fromTime || info.toTime "> Uhr </span></label>
+					        </div>
+						</section>
+					</fieldset>
+					</div>
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top23"   >
+					<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                    <button type="submit" value=""  class="btn btn-primary no-margin margin-left-5  pull-right "   ng-click="reportScoreCard()">Schadenmeldung senden  </button>
+                    <button type="submit" value=""  class="btn btn-primary no-margin  pull-right "  ng-click="goReportPage()">Schadenmeldung Druckansicht </button>
+                 </section>
+			</fieldset>
+</div>

@@ -1,0 +1,17 @@
+
+<div class="container padding-top-bottom">
+	<div class="col-lg-12 padding-top-bottom center " id="topArea">
+		<br> <br> <img src="img/image_ok.png"
+			class="padding-top-bottom width-10-percent " /> <br> <br> <br>
+		<label class="control-label col-sm-18 no-padding center title"
+			ng-show="hasRole('ROLE_EMPLOYEES')">Die
+			Schadenmeldung wurde erfolgreich verarbeitet. Sie können sich das
+			Scoring-Dokument als PDF direkt ansehen und bekommen es automatisch
+			in Ihre Schadenakte überführt.</label> <label
+			class="control-label col-sm-18 no-padding center title"
+			ng-show="!hasRole('ROLE_EMPLOYEES')">Vielen Dank für Ihre Schadenmeldung.
+			<br> Wir werden uns umgehend mit Ihnen in Verbindung setzen.</label>
+	</div>
+
+</div>
+

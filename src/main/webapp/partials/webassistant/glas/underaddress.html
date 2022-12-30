@@ -1,0 +1,37 @@
+<fieldset class="border-area">
+	<section class=" col-sm-12 no-padding-left-right" >
+		<label class="control-label col-sm-4" for="name">Was wurde beschädigt?</label>
+		<div class="col-sm-8">
+	
+			<section class="col-sm-12  hiden-accident" >
+				<div class="col-sm-6" ng-repeat="data in whatBeenDamagedDatas">
+					<div class="control-group">
+						<label class="display-block control control--checkbox"> <input
+							type="checkbox" ng-model="info.whatBeenDamagedItem[data]" /><i></i>{{data}}
+							<div class="control__indicator"></div>
+						</label>
+					</div>
+				</div>
+			</section>
+			<section class="col-md-12 no-padding-left-right">
+				<input type="text" class="form-control" ng-show="info.whatBeenDamagedItem['Sonstiges']" 
+					ng-model="info.whatBeenDamaged" />
+			</section>
+		</div>
+	</section>
+</fieldset>
+<fieldset class="border-area">
+	<section class=" col-sm-12 no-padding-left-right">
+		<label class="control-label col-sm-4" for="name">Wurde eine Reparatur bereits durchgeführt?</label>
+		<div class="col-sm-8">
+			<label class=" radio control control--radio no-margin"> <input
+				type="radio" name="culprit" ng-model="info.repairAlready"
+				ng-value=1> <i></i>Ja
+				<div class="control__indicator"></div></label> <label
+				class=" radio control control--radio  no-margin"> <input
+				type="radio" name="culprit" ng-model="info.repairAlready"
+				ng-value=0> <i></i>Nein
+				<div class="control__indicator"></div></label>
+		</div>
+	</section>
+</fieldset>

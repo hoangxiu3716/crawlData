@@ -1,0 +1,27 @@
+
+<div class="row">
+<div class="ibox-content-small">
+		<div ng-show="info.basePharma && info.basePharma.length >0" class="footable table table-stripped toggle-arrow-tiny">
+			<div class="col-xs-8"><h4>Name</h4></div>
+			<div class="col-xs-2" ><h4>Active</h4></div>
+			<div class="col-xs-2 align-center" ><h4 data-localize="Delete">L&ouml;schen</h4></div>
+			<div>
+				<section ng-repeat="data in info.basePharma" class="geofence-item col col-md-12 no-padding" >
+					<div class="col-xs-8"  >{{data.baseName}}</div>
+					<div class="col-xs-2" >{{data.baseActive
+						== true? "Ja" : "Nein" }}</div>
+					<div class="col-xs-2" >
+						<div align="center">
+							<button class="btn btn-small btn-icon btn-danger center-block"
+								confirmed-click="removePharma($index)"
+								ng-confirm-click="Sind sie sicher, dass Sie diese Daten l&ouml;schen m&ouml;chten?">
+								<i class='fa fa-times'></i>
+							</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		</div>
+</div>
+

@@ -1,0 +1,145 @@
+		<div class="progress_line" ng-class="{progress_line_border : inProcess > 4}">
+		<fieldset class="ibox-content-with-line"  id="accidentArea"  ng-show="inProcess > 3.5"  >
+				<i ng-class="inProcess === 4 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Allgemeine Angaben zum Schaden</label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding none-display" for="name" id="accidentAreaContentState" ng-click="showHideElement('#accidentAreaContent')" >Angaben &#228;ndern</label>
+				<label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Was ist Ihnen passiert?</label>
+				<fieldset class="custom-customer-area padding-10" id="accidentAreaContent">
+				<fieldset class="border-area">
+					<section class="col-sm-12 no-padding-left-right ">
+									<label class="control-label col-sm-4" for="name">Schadentag *</label>
+									<div class="col-sm-8">
+				                           <div class="col-sm-12 no-padding-left-right">
+				                                    <div class="input-group">
+				                                        <span class="input-group-addon" onclick="$('#dayOfAccident').focus();"><i class="fa fa-calendar"></i></span>
+				                                        <div datetimepicker=""  maxdate = {{newdate}} data-ng-model="info.dayOfAccident">
+				                                            <input type="text" placeholder="DD.MM.YYYY" readonly="readonly"  id="dayOfAccident" name="dayOfAccident"
+				                                                   class="form-control" 
+				                                                   data-date-format="DD.MM.YYYY" >
+				                                        </div>
+				                                    </div>
+				
+				                        </div>
+				                         <div class="col-sm-12 no-padding-left-right">
+						                        <div class="control-group">
+									                    <label class="display-block control control--checkbox">
+									                        <input type="checkbox"  ng-model="info.dayOfAccidentUnknow" /><i></i>unbekannt
+									                        <div class="control__indicator"></div>
+									                    </label>
+									               </div>
+							               </div>
+									</div>
+					</section>				
+					<section class="col-sm-12 no-padding-left-right" >
+									<label class="control-label col-sm-4" for="name">Uhrzeit</label>
+									<div class="col-sm-8">
+				                           <div class="">
+				                                    <div class="input-group">
+				                                        <span class="input-group-addon" onclick="$('#timeOfAccident').focus();"><i class="fa fa-calendar"></i></span>
+				
+				                                        <div timepicker=""   data-ng-model="info.timeOfAccident">
+				                                            <input type="text" placeholder="HH:MM" readonly="readonly"  id="timeOfAccident" name="date"
+				                                                   class="form-control" 
+				                                                   data-date-format="HH:mm">
+				                                        </div>
+				                                    </div>
+				
+				                        </div>
+									</div>
+					</section>	
+					<section class="col-sm-12 no-padding-left-right" ng-hide="hideGlas">
+						<label class="control-label col-sm-4" for="name">Adresse</label>
+	
+						<div class="col-sm-8">
+							<div class="col-sm-4 no-padding">
+		                        <input id="name" class="form-control" placeholder="Stra&szlig;e + Nr."  ng-model="info.street"/>
+	                    	</div>
+	                    	<div class="col-sm-4 no-padding">
+		                         <div angucomplete-alt id="PLZ"
+								  placeholder="PLZ"
+								  pause="300"
+								  selected-object="selectedPlz"
+								  remote-api-handler="autoFillOrt"
+								  title-field="zcZip"
+								  minlength="1"
+								  description-field="zcLocationName"
+								  input-class="form-control form-control-small"
+								  match-class="highlight"
+								  input-changed="inputChangedName">
+								</div>
+	                    	</div>	
+	                    	<div class="col-sm-4 no-padding">
+		                        <input id="name" class="form-control" placeholder="Ort" ng-model="info.city"/>
+	                    	</div>
+						</div>
+					</section>
+					
+					<section class="col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name" >In welcher Umgebung hat sich der Schaden ereignet?</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.environment"
+								ng-options="data for data in environmentDatas "  >
+									<option value=""></option>
+							</select>
+						</div>
+					</section>
+				</fieldset>
+				<div ng-if="info.typeOfDamage =='Glas'"  ng-include  src="'partials/webassistant/glas/underaddress.html'"></div>
+				<fieldset class="border-area">
+					<section class=" col-sm-12 no-padding-left-right"  ng-hide="unfall.onlyForeignCar">
+						<label class="control-label col-sm-4" for="name">Ist Ihr Fahrzeug fahrbereit?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="vehicleReady" ng-model="info.vehicleReady" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="vehicleReady" ng-model="info.vehicleReady" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>
+					<section class=" col-sm-12 no-padding-left-right" ng-show="info.vehicleReady === 0">
+						<label class="control-label col-sm-4" for="name">Brauchen Sie einen Abschleppdienst?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="towingService" ng-model="info.towingService" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio  no-margin">
+								<input type="radio" name="towingService" ng-model="info.towingService" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>
+					<div ng-if="info.typeOfDamage =='Sonstiges'"  ng-include  src="'partials/webassistant/sonstiges/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Unfall'"  ng-include  src="'partials/webassistant/unfall/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Haftpflicht'"  ng-include  src="'partials/webassistant/haftpflicht/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Einbruch / Diebstahl'"  ng-include  src="'partials/webassistant/einbruchdiebstahl/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Vandalismus'"  ng-include  src="'partials/webassistant/vandalismus/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Sturm'"  ng-include  src="'partials/webassistant/sturm/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Hagel'"  ng-include  src="'partials/webassistant/hagel/undervehicleready.html'"></div>
+					<div ng-if="info.typeOfDamage =='Wildunfall'"  ng-include  src="'partials/webassistant/wildunfall/undervehicleready.html'"></div>
+				</fieldset>
+				<fieldset class="border-area">
+					<div ng-if="info.typeOfDamage =='Unfall'"  ng-include src="'partials/webassistant/unfall/witnessesavailablearea.html'"></div>
+					<div ng-if="info.typeOfDamage =='Haftpflicht'"  ng-include src="'partials/webassistant/haftpflicht/witnessesavailablearea.html'"></div>
+					<div ng-if="info.typeOfDamage =='Einbruch / Diebstahl'"  ng-include  src="'partials/webassistant/einbruchdiebstahl/witnessesavailablearea.html'"></div>
+					<div ng-if="info.typeOfDamage =='Vandalismus'"  ng-include  src="'partials/webassistant/vandalismus/witnessesavailablearea.html'"></div>
+					<div ng-if="info.typeOfDamage =='Sturm'"  ng-include  src="'partials/webassistant/sturm/witnessesavailablearea.html'"></div>
+					<div ng-if="info.typeOfDamage =='Wildunfall'"  ng-include  src="'partials/webassistant/wildunfall/witnessesavailablearea.html'"></div>
+			
+				</fieldset>	
+				Alle mit * gekennzeichneten	Felder sind	Pflichtfelder
+				<section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess != 4">
+					<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="backtotop()" ng-show="!unfall.onlyForeignCar" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+					<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="showHideElement('#foreigncarAreaContent')" ng-show="unfall.onlyForeignCar"><i class='fa fa-angle-up'></i>  Angaben	ändern</button>
+					<button type="submit" value=""  class="btn btn-primary  no-margin pull-right " ng-show="!showAreaOfBeenDamaged && !hideHagel && !hideGlas"  ng-click="showHideElement('#infoVehicleAreaContent')">Weiter <i class='fa fa-angle-double-right'></i> </button>
+					<button type="submit" value=""  class="btn btn-primary  no-margin pull-right " ng-show="(showAreaOfBeenDamaged && inProcess != 5) || hideHagel || hideGlas"  ng-click="showHideElement('#detailsVehicleAreaContent')">Weiter <i class='fa fa-angle-double-right'></i> </button>
+               		<button type="submit" value=""  class="btn btn-primary  no-margin pull-right " ng-show="showAreaOfBeenDamaged && inProcess ==5"  ng-click="nextToDetailsVehicle()">Weiter <i class='fa fa-angle-double-right'></i> </button>           
+                 </section>
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top18"  ng-show="inProcess == 4">
+						<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToInfoVehicle()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                 </section>
+			</fieldset>
+			
+	</div>

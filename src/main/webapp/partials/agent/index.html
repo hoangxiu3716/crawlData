@@ -1,0 +1,116 @@
+<div class="row">
+	<div class="col-lg-12 ">
+	<form class="smart-form border-1" id="form" name="form" ng-show="addArea">
+		
+			<div class="ibox-title">
+					<h5>{{heading}}</h5>
+                </div>
+			<fieldset class="ibox-content" >
+				<fieldset class="custom-customer-area padding-10">
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">Name</label>
+					<div class="col-lg-8">
+                        <input id="name" class="form-control" required ng-model="info.name"/>
+					</div>
+				</section>
+				<section class="col-sm-12 form-group">
+					<label class="control-label col-lg-2" for="name">Adresse</label>
+
+					<div class="col-lg-8">
+						<div class="col-lg-4 no-padding">
+						<label class="control-label" for="age">Stra&szlig;e + Nr.</label>
+							 
+	                        <input id="name" class="form-control" placeholder="Stra&szlig;e + Nr."  ng-model="info.street"/>
+	                    	
+                    	</div>
+                    	<div class="col-lg-4 no-padding">
+                    		<label class="control-label padding-left-2" for="age">PLZ</label>
+	                        <input id="name" class="form-control"  placeholder="PLZ" ng-model="info.postCode"/>
+	                    
+                    	</div>	
+                    	<div class="col-lg-4 no-padding">
+                    		<label class="control-label padding-left-2" for="age">Ort</label>
+	                        <input id="name" class="form-control" placeholder="Ort" ng-model="info.city"/>
+	                    	
+                    	</div>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">Telefon  </label>
+
+					<div class="col-lg-8">
+						 
+                        <input id="name" class="form-control"  type="phone" ng-model="info.phone"/>
+                    
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">E- Mail  </label>
+
+					<div class="col-lg-8">
+						 
+                        <input id="name" class="form-control" type="email" ng-model="info.email"/>
+                    
+					</div>
+				</section>
+				</fieldset>
+				<label class="col-lg-12 control-label  padding-5-12 " ng-if="!edit" for="name">Login Daten </label>
+				<fieldset class="custom-customer-area padding-10" ng-if="!edit">
+				<section class=" col-md-12 form-group"   >
+					<label class="control-label col-lg-2" for="name">Benutzername </label>
+
+					<div class="col-lg-8">
+						 
+                        <input id="name" class="form-control"  name="cusName" ng-model="info.username" required ng-minlength=4 ng-maxlength=100 />
+                    	
+                    	<div class="error-container" ng-show="form.cusName.$dirty && form.cusName.$invalid">
+                        <small class="error" ng-show="form.cusName.$error.required">Der benutzername ist erforderlich.</small>
+                        <small class="error" ng-show="form.cusName.$error.minlength">Ein Passwort muss mindestens 4 Zeichen lang sein.</small>
+                        <small class="error" ng-show="form.cusName.$error.maxlength">User Name must be less than or equals to 100 characters.</small>
+                   		</div>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group"  ng-if="!edit">
+					<label class="control-label col-lg-2" for="name">Passwort  </label>
+
+					<div class="col-lg-8">
+						 
+                        <input id="cuspass" class="form-control" type="password" name="cuspass"  required ng-minlength=4 ng-maxlength=100 ng-model="info.password"/>
+                    	
+                     	<div class="error-container" ng-show="form.cuspass.$dirty && form.cuspass.$invalid">
+                        <small class="error" ng-show="form.cuspass.$error.required">Ein Passwort für den Benutzer ist erforderlich.</small>
+                        <small class="error" ng-show="form.cuspass.$error.minlength">Ein Passwort muss mindestens 4 Zeichen lang sein.</small>
+                        <small class="error" ng-show="form.cuspass.$error.maxlength">Ein Passwort darf nicht länger als 100 Zeichen sein.</small>
+                    	</div>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group"  ng-if="!edit">
+					<label class="control-label col-lg-2" for="newPassword">Passwort best&auml;tigen  </label>
+					<div class="col-lg-8">
+						 
+                        <input id="repeatPassword" class="form-control" type="password"  name="repeatPassword" pw-check="cuspass" ng-model="rePassword"  ng-minlength=4 ng-maxlength=100 required/>
+                    	
+                     	<div class="error-container" ng-show="form.repeatPassword.$dirty && form.repeatPassword.$invalid">
+                     	<small class="error" ng-show="form.repeatPassword.$error.pwmatch">Die Passw&ouml;rter stimmen nicht &uuml;berein.</small>
+                        <small class="error" ng-show="form.repeatPassword.$error.required">Ein Passwort für den Benutzer ist erforderlich.</small>
+                        <small class="error" ng-show="form.repeatPassword.$error.minlength">Ein Passwort muss mindestens 4 Zeichen lang sein.</small>
+                        <small class="error" ng-show="form.repeatPassword.$error.maxlength">Ein Passwort darf nicht länger als 100 Zeichen sein.</small>
+                    	</div>
+					</div>
+				</section>
+				</fieldset>
+				<footer class=" col-lg-10 no-boder padding-top-20 padding-bottom-20  " >
+				            <input type="submit" value="Speichern" ng-if="!edit" class="btn btn-primary pull-right" ng-disabled="form.$invalid" ng-click="save()"/>
+				            <input type="submit" value="Aktualisierung" ng-if="edit" class="btn btn-success pull-right" ng-disabled="form.$invalid" ng-click="update()"/>
+				            <input type="button" value="Abbrechen" class="btn pull-right" ng-click="resetForm()"/>
+				</footer>
+	   				
+			</fieldset>
+	
+
+		</form>
+		
+		</div>
+		<div ng-include src="'partials/agent/list.html'"></div>	
+	</div>
+

@@ -1,0 +1,48 @@
+<!-- widget grid -->
+<section class="">
+
+    <!-- row -->
+    <div class="row no-padding">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+                    <h2>Role</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <table tr-ng-grid="" items="roleList" page-items="pagingOptions.pageSize" locale="de"
+                               total-items="totalElements"
+                               on-data-required="onServerSideItemsRequested(currentPage, filterBy, filterByFields, orderBy, orderByReverse)"
+                               enable-filtering="false"
+                               enable-sorting="false">
+                            <thead>
+                            <tr>
+                                <th field-name="name" display-name="Name"></th>
+                                <th field-name="description" display-name="Description"></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

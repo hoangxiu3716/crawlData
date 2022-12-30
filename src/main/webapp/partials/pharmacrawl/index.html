@@ -1,0 +1,153 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox-title">
+			<h5>Platzierungen (t&auml;glich)</h5>
+		</div>
+		<div class="ibox-cotent">
+			<section class="col-sm-12 padding-10">
+				<div class="float-left pointer col-sm-1 width-3-5">
+					<span class="fa fa-sort-down fa-2x color-custom" ng-show="!showOptions"
+						ng-click="loadMore(true)"></span>
+				</div>
+				<div class="col-sm-1">
+					<label class="tiny-letters">Zeitraum</label>
+				</div>
+				<div class="col-sm-2 custom-form">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<div datetimepicker="" data-ng-model="search.fromTime">
+								<input type="text" placeholder="DD.MM.YYYY " id="fromTime"
+									name="fromTime" class="form-control"
+									data-date-format="DD.MM.YYYY ">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-1 width-2">
+					<label class="tiny-letters">to</label>
+				</div>
+				<div class="col-sm-2 custom-form">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<div datetimepicker="" data-ng-model="search.toTime">
+								<input type="text" placeholder="DD.MM.YYYY " id="toTime"
+									name="toTime" class="form-control"
+									data-date-format="DD.MM.YYYY ">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<select class=" form-control" ng-model="search.shop" ng-options="item as item.url for item in parsehubSetting | unique: 'url'" ng-change="loadShopNameFalse()">
+						<option value="" selected>Shop</option>
+					</select>
+				</div>
+				<!--  <div class="col-sm-2">
+					<option value="" selected>Type</option>
+						<option value="Bauchschmerzen" selected>Bauchschmerzen</option>
+						<option value="Bauchkr&auml;mpfe" selected>Bauchkr&auml;mpfe</option>
+						<option value="Blutzucker" selected>Blutzucker</option>
+						<option value="Teststreifen" selected>Teststreifen</option>
+						<option value="Diabetes Teststreifen" selected>Diabetes
+							Teststreifen</option>
+					    <option value="BL&Auml;HUNGEN & KR&Auml;MPFE" selected>BL&Auml;HUNGEN</option>
+						<option value="BL&Auml;HUNGEN & KR&Auml;MPFE" selected>BL&Auml;HUNGEN & KR&Auml;MPFE</option>
+						<option value="Magen & Darm" selected>Magen & Darm</option>
+						<option value="Diabetes" selected>Diabetes</option>
+						<option value="Blutzuckermessger&auml;t Zubeh&ouml;r" selected>Blutzuckermessger&auml;t Zubeh&ouml;r</option>
+						<option value="Blutzuckerteststreifen" selected>Blutzuckerteststreifen</option>
+						<select  ng-options="item.id as item.name for item in groupPages"   class=" form-control" ng-model="info.groupId" >
+										<option value="" selected data-localize="General" ></option>
+									</select>
+				</div>-->
+				<!--  <div class="col-sm-2 custom-form">
+					<select class=" form-control" ng-options="item as item.name for item in pharmaSetting | filter:{type:'!CROSS-SELLING'}" ng-model="info.type" ng-change="loadKeywordFalse()">
+						<option value="" >Art</option>
+					</select>
+				</div>-->
+				<div class="col-sm-2 custom-form2">
+					<select class=" form-control" ng-model="search.pharmaSettingId" ng-change="loadKeywordFalse()">
+						<option value="">Art</option>
+						<optgroup label="Keyword">
+							<option ng-repeat="item in pharmaSetting | filter:{type:'KEYWORD'}" ng-value="item.id">{{item.name}}</option>
+						</optgroup>
+						<optgroup label="Kategorie">
+							<option ng-repeat="item in pharmaSetting | filter:{type:'CATEGORY'}" ng-value="item.id">{{item.name}}
+							</option>
+						</optgroup>
+						<optgroup label="Cross-Selling">
+							<option ng-repeat="item in pharmaSetting | filter:{type:'CROSS-SELLING'}" ng-value="item.id">{{item.name}}
+							</option>
+						</optgroup>
+					</select>
+				</div>
+				<div class="col-sm-1 navbar-right">
+					<input type="button" value="Suchen"
+						class="btn btn-primary pull-right no-margin btn-custom"
+						ng-click="pharmaDetail()" />
+				</div>
+				<!-- 
+				<div class="col-sm-2 navbar-right">
+					<input type="button" value="Dowload Excel"
+						class="btn btn-primary pull-right no-margin btn-custom"
+						ng-click="exportPharma()" />
+				</div> -->
+			</section>
+			<section class="col-sm-12 padding-10" ng-show="showOptions">
+				<div class="float-left pointer col-sm-1 width-3-5">
+					<span class="fa fa-sort-up fa-2x color-custom padding-top-10" ng-show="showOptions"
+						ng-click="loadMore(false)"></span>
+				</div>
+				<div class="col-sm-1">
+					<label class="tiny-letters">Preis</label>
+				</div>
+				<div class="col-sm-2">
+					<input placeholder="Preis von" type="number" min="0.1"
+						step="0.01" class=" form-control" ng-model="search.fromPrice" />
+				</div>
+				<div class="col-sm-1 width-2">
+					<label>-</label>
+				</div>
+				<div class="col-sm-2">
+					<input placeholder="Preis bis" type="number" min="0.1"
+						step="0.01" class=" form-control" ng-model="search.toPrice" />
+				</div>
+				<div ng-hide="info.shops.type !='sanicare'">
+				<div class="col-sm-1">
+					<label>Rabatt</label>
+				</div>
+				<!-- div class="col-sm-2">
+					<input placeholder="Lowest discount" type="number" min="1"
+						step="1" class=" form-control" ng-model="info.fromDiscount" />
+				</div>
+				<div class="col-sm-1 width-2">
+					<label>-</label>
+				</div>
+				<div class="col-sm-2">
+					<input placeholder="Highest discount" type="number" min="1"
+						step="1" class=" form-control" ng-model="info.toDiscount" />
+				</div> -->
+			</section>
+		</div>
+		<div class="ibox-content">
+			<table ng-table="tableParams" class="table ng-table-responsive pointer"
+				show-filter="true">
+				<tr ng-repeat="data in dataTable">
+					<td sortable="'importDate'" data-title="'Datum'">{{data.importDate | date : dd.MM.yyyy}}</td>
+					<td sortable="'shop'" data-title="'Shop'">{{data.parsehubName}}</td>
+					<td sortable="'sequenceByKeyword'" data-title="'Platzierung'">{{data.sequenceByKeyword}}</td>
+					<td filter="{ 'name' : 'text'}" data-title="'Produkt'">{{data.name}}</td>
+					<td filter="{ 'pzn' : 'text'}" data-title="'PZN'">{{data.pzn}}</td>
+					<td data-title="'AVP'">{{data.fullPrice ? (convertPriceToDouble(data.fullPrice) + '&euro;') : (convertAvpToDouble(data.avp) + '&euro;')}}</td>
+					<td data-title="'Price'">{{data.priceInDouble ? ((data.priceInDouble | number) +'&euro;') : '-'}}</td>
+					<td data-title="'Discount'">{{data.discount ? data.discount + ' %' : '-'   }}</td>
+					<td sortable="'quantity'" filter="{ 'quantity' : 'text'}"
+						data-title="'Menge'">{{data.quantity}}</td>
+					<td data-title="'Art'">{{convertKeyword(data.keyword)}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

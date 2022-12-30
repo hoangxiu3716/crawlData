@@ -1,0 +1,50 @@
+
+        <div class="">
+            <div class="row no-margin first-page">
+                <div class="col-xs-12 col-sm-6 col-md-6" id="pc-version">
+                    <div class="recent-work-wrap"  id="pc-recent-work-wrap" >
+                        <img class="img-responsive" src="images/admiral_pc.jpeg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">WEB-Erfassung</a> </h3>
+                                <p >Erfassen Sie Ihren Schaden im Internet am PC. Im Vorfeld erstellte Lichtbilder Ihres beschädigten Fahrzeuges verhelfen Ihnen zu einer schnellen Regulierung.</p>
+                                 <label><a class="preview" href="#/mainassistant/webassistant" target="_blank"><i class="fa fa-eye"></i>  Web Assistent starten</a></label>
+                            </div>
+                        </div>
+                        <div><h2>WEB-Erfassung</h2></div>
+                    </div>
+                </div>   
+
+                <div class="col-xs-12 col-sm-6 col-md-6" id="mobile-version">
+                    <div class="recent-work-wrap" id="mobile-recent-work-wrap">
+                        <img class="img-responsive" src="images/admiral_mobile.jpeg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Mobile</a></h3>
+                                <p class="main-nomargin">Mit dieser Lösung erhalten Sie von uns einen Link via E-Mail um Ihren Schaden auf einem mobilen Endgerät zu erfassen.</p>
+                                 <div class="form-group main-margin-bottom-3">
+		                            <label>E-Mail Adresse: </label>
+		                            <div class="input-group input-group-lg">
+											<input class="form-control" type="email" ng-model="info.email">
+											<span class="input-group-btn "><button class="btn btn-primary no-margin" type="button" ng-click="sendEmail()" ng-disabled="!info.email">Senden</button></span>
+									</div>
+		                        </div>
+		                        <div class="form-group" ng-if="hasRole('ROLE_EMPLOYEES')">
+		                            <section class="col-sm-12 no-padding-left-right">
+											<input ng-model="autoLogin.user" class="form-control" type="text" placeholder="Versicherungsschein-Nummer">
+									</section>
+		                            <section class="col-sm-12 no-padding-left-right">
+											<input ng-model="autoLogin.password" class="form-control" type="text" uppercased placeholder="Kennzeichen">
+									</section>
+		                        </div>
+                            </div> 
+                        </div>
+                        <div><h2>Mobile</h2></div>
+                    </div>
+                </div> 
+
+                
+            </div><!--/.row-->
+        </div><!--/.container-->
+<div class="loading" ng-show="showCustomLoading">Loading&#8230;</div>
+    

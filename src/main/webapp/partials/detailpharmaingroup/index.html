@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox-title height-90">
+			<div class="page-title-left">
+				<div>
+					<input type="button" value="Filter setzen"
+						class="btn btn-primary pull-left no-margin btn-custom"
+						ng-click="dialogAddGroup()" />
+				</div>
+				<h5 class="padding-10">In die Auswertung der Sichtbarkeit werden ausschlie&szlig;lich
+					Platzierungen bis 30 ber&uuml;cksichtigt. Platzierungen dar&uuml;ber hinaus
+					werden nicht ber&uuml;cksichtigt.</h5>
+			</div>
+
+		</div>
+		
+	<div class="ibox-title">
+		<div ng-show="data && data.length > 0">
+			<div class="col-sm-8">
+				<label class="control-label" >Durchschnitt:</label>  
+				<input type="button" value="Tag" class="btn btn-primary  no-margin btn-custom-2" ng-click="updateDataGroupingUnits(['day', [1]])" />		
+				<input type="button" value="2 Tage" class="btn btn-primary  no-margin btn-custom-2" ng-click="updateDataGroupingUnits(['day', [2]])" />		
+				<input type="button" value="Woche" class="btn btn-primary  no-margin btn-custom-2" ng-click="updateDataGroupingUnits(['week', [1]])" />
+				<input type="button" value="2 Wochen" class="btn btn-primary  no-margin btn-custom-2" ng-click="updateDataGroupingUnits(['week', [2]])" />
+				<input type="button" value="Monat" class="btn btn-primary  no-margin btn-custom-2" ng-click="updateDataGroupingUnits(['month', [1]])" />	
+				<label class="control-label" > Exportieren:</label>  			
+				<input type="button" value="Excel" class="btn btn-primary no-margin btn-custom-2" ng-click="exportPharmaDetail()" />			
+			</div>
+			<div class="col-sm-4">
+				<div class="pull-right">Auswertungszeitraum: {{search.fromTime | date : 'dd.MM.yyyy'}} - {{search.toTime | date : 'dd.MM.yyyy'}}</div>
+			</div>
+			<div class="col-sm-12">
+				
+				 <div class="control-group">
+				 		<label class="control-label" >Ansicht von:</label>  
+			                 <label class=" radio control control--radio " ng-repeat="item in viewTypes">
+			                 	 <input
+									type="radio" name="search.viewType" ng-model="search.viewType" ng-value="item.code"  ng-change="buildSeries()"> <i></i><span
+									 >{{item.name}}</span>
+								<div class="control__indicator"></div></label>
+							
+			               </div>
+			</div>
+			<div class="col-sm-12">
+				 <div class="control-group">
+				 		<label class="control-label" >Group by:</label>  
+			                 <label class=" radio control control--radio " ng-repeat="item in groupTypes">
+			                 	 <input
+									type="radio" name="search.groupType" ng-model="search.groupType" ng-value="item.code"  ng-change="buildSeries()"> <i></i><span
+									 >{{item.name}}</span>
+								<div class="control__indicator"></div></label>
+							
+			               </div>
+			</div>
+			<div id="pharmaChart" style=" margin: 0 auto ; float: left;width: 100%"></div>
+		</div>
+		<div ng-include src="'partials/detailpharmaingroup/list.html'"></div>
+	</div>
+
+	</div>
+</div>

@@ -1,0 +1,76 @@
+<!-- col -->
+<div class="row no-padding">
+    <div class="col-xs-12">
+        <h1 class="page-title txt-color-blueDark">
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-pencil-square-o"></i>
+            Add	New User 
+        </h1>
+    </div>
+</div>
+<!-- end col -->
+
+<form class="smart-form" id="form" name="form">
+    <fieldset>
+        <div class="row">
+            <section class="col col-6">
+                <label class="control-label col-sm-4" for="username">Username</label>
+                <div class="col-sm-8">
+                        <input id="username" class="form-control" ng-model="newUser.username" name="username" ng-maxlength=50 required/>
+                    <div class="error-container" ng-show="form.username.$dirty && form.username.$invalid">
+                        <small class="error" ng-show="form.username.$error.required">Der benutzername ist erforderlich.</small>
+                        <small class="error" ng-show="form.username.$error.maxlength">User Name must be less than or equals to 255 characters.</small>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col col-6">
+                <label class="control-label col-sm-4" for="password">Password</label>
+                <div class="col-sm-8">
+                        <input id="password" type="password" class="form-control" ng-model="newUser.password" name="password"  ng-minlength=4 ng-maxlength=255 required />
+                    <div class="error-container" ng-show="form.password.$dirty && form.password.$invalid">
+                        <small class="error" ng-show="form.password.$error.required">Ein Passwort für den Benutzer ist erforderlich.</small>
+                        <small class="error" ng-show="form.password.$error.minlength">Ein Passwort muss mindestens 4 Zeichen lang sein.</small>
+                        <small class="error" ng-show="form.password.$error.maxlength">Ein Passwort darf nicht länger als 255 Zeichen sein.</small>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col col-6">
+                <label class="control-label col-sm-4" for="fullname">FullName</label>
+
+                <div class="col-sm-8">
+                        <input id="fullname" class="form-control" ng-model="newUser.fullname" name="fullname" type="text" value=""  ng-maxlength=255  required />
+                    <div class="error-container"  ng-show="form.fullname.$dirty && form.fullname.$invalid">
+                        <small class="error" ng-show="form.fullname.$error.required">Der vollständige Name des Benutzers ist erforderlich.</small>
+                        <small class="error" ng-show="form.fullname.$error.maxlength">Der Benutzername darf maximal 255 Zeichen lang sein.</small>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row inline-group">
+            <section class="col col-6">
+                <label class="control-label col-sm-4">Roles</label>
+                <div class="col-sm-8">
+                <div class="control-group">
+                    <label ng-repeat="role in roleList" class="display-block control control--checkbox">
+                        <input type="checkbox" ng-disabled = "disabledRoles.indexOf(role.name)!== -1" ng-model="newUser.roles[role.name]"/><i></i>{{role.description}}
+                        <div class="control__indicator"></div>
+                    </label>
+               </div>
+               <small class="error" ng-show="checkRole">Es muss mindestens eine Rolle ausgewählt werden.</small>
+                    
+                </div>
+            </section>
+        </div>
+		
+        <footer>
+            <div class="col col-6">
+                <input type="submit" value="Save" class="btn btn-primary pull-right" ng-disabled="form.$invalid" ng-click="saveUser()"/>
+                <input type="button" value="Cancel" class="btn pull-right" ui-sref="admin.user"/>
+            </div>
+        </footer>
+    </fieldset>
+</form>

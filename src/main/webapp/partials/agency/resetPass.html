@@ -1,0 +1,64 @@
+
+<div class="row ">
+    <div class="col-lg-12  ">
+        		     <div class="ibox-title">
+                    <h5> PASSWORT &Auml;NDERN</h5>
+				</div>
+    </div>
+
+<!-- end col -->
+
+	<form class="smart-form" name="form">
+	<fieldset class="col-lg-12 padding-10" >
+		
+	        <div class="row">
+	            <section class="col-sm-12 form-group">
+	                <label class="control-label col-sm-4" for="username">Benutzername</label>
+	
+	                <div class="col-sm-8">
+	                        <input id="username" class="form-control" readonly="true" ng-model="passwordInput.username"/>
+	              
+	                </div>
+	            </section>
+	        </div>
+	       
+	        <div class="row">
+	            <section class="col col-sm-12 form-group">
+	                <label class="control-label col-sm-4" for="newPassword">Neues Passwort</label>
+	
+	                <div class="col-sm-8 form-group">
+	                        <input id="newPassword" type="password" class="form-control"
+	                               ng-model="passwordInput.newPassword"  name="newPassword"  ng-minlength=4 ng-maxlength=255 required />
+	               
+	                    <div class="error-container" ng-show="form.newPassword.$dirty && form.newPassword.$invalid">
+	                        <small class="error" ng-show="form.newPassword.$error.required">Das neues Passwort ist erforderlich.</small>
+	                        <small class="error" ng-show="form.newPassword.$error.minlength">Das neues Passwort muss mindestens 4 Zeichen lang sein.</small>
+	                        <small class="error" ng-show="form.newPassword.$error.maxlength">Das neues Passwort darf nicht l&auml;nger als 255 Zeichen sein.</small>
+	                        <small class="error" ng-show="form.newPassword.$error.pwChangeMatch">Das neues Passwort ist das gleiche wie aktuelle Passwort ein.</small>
+	                    </div>
+	                </div>
+	            </section>
+	        </div>
+	        <div class="row">
+	            <section class="col col-sm-12 form-group">
+	                <label class="control-label col-sm-4" for="newPassword">Passwort best&auml;tigen</label>
+	                <div class="col-sm-8 form-group">
+	                        <input id="repeatPassword" type="password" class="form-control"
+	                               ng-model="passwordInput.repeatPassword" name="repeatPassword" pw-check="newPassword"  ng-minlength=4 ng-maxlength=255 required/>
+	                 
+	                    <div class="error-container"  ng-show="form.repeatPassword.$dirty && form.repeatPassword.$invalid">
+	                        <small class="error" ng-show="form.repeatPassword.$error.required">Bitte best&auml;tigen Sie das Passwort</small>
+	                        <small class="error" ng-show="form.repeatPassword.$error.minlength">Das Passwort muss mindestens 4 Zeichen lang sein.</small>
+	                        <small class="error" ng-show="form.repeatPassword.$error.maxlength">DasPasswort darf nicht l&auml;nger als 255 Zeichen sein.</small>
+	                        <small class="error" ng-show="form.repeatPassword.$error.pwmatch">Die Passw&ouml;rter stimmen nicht &uuml;berein.</small>
+	                     </div>
+	                </div>
+	            </section>
+	        </div>
+
+	    <footer class=" col-lg-12 no-boder padding-top-20 padding-bottom-20  " > 
+	            <input type="submit" value="Speichern" class="btn btn-primary pull-right" ng-disabled="form.$invalid" ng-click="changePassword()"/>
+	    </footer>
+	    </fieldset>
+	</form>
+</div>

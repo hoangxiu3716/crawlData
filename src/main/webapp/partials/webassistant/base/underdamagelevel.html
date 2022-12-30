@@ -1,0 +1,77 @@
+<fieldset class="border-area" ng-if="info.damageLevel != 'Rechnung'" >
+						<section class="col-sm-12 no-padding-left-right " >
+							<div class="alert alert-warning" >
+									<label class="control-label " for="name" >Profitieren Sie von den Vorteilen bei einer Reparatur in unserem Partner-Netzwerk</label>
+									<ul>
+										<li>Kostenloser Leihwagen (auch im Kaskofall)</li>
+										<li>Hol- und Bringservice kostenlos</li>
+										<li>Fahrzeugreinigung innen und außen</li>
+										<li>5 Jahre Garantie</li>
+									</ul>
+							</div>
+						
+						</section>
+						<section class=" col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Wollen Sie Ihr Fahrzeug reparieren lassen?</label>
+							<div class="col-sm-8">
+		                       	<label class=" radio control control--radio no-margin">
+									<input type="radio" name="vehicleRepaired" ng-model="info.vehicleRepaired" ng-change="clearDataWerkstattnetz()"  ng-value = 1>
+									<i></i>Ja <div class="control__indicator"></div></label>
+						 		<label class=" radio control control--radio no-margin">
+									<input type="radio" name="vehicleRepaired" ng-model="info.vehicleRepaired" ng-change="clearDataWerkstattnetz()" ng-value = 0 >
+									<i></i>Nein<div class="control__indicator"></div></label>
+							</div>
+						</section>
+						<section class=" col-sm-12 no-padding-left-right" ng-show="info.vehicleRepaired === 0">
+							<label class="control-label col-sm-4" for="name">Wollen Sie sich das Geld der Reparatur netto auszahlen lassen?</label>
+							<div class="col-sm-8">
+		                       	<label class=" radio control control--radio no-margin">
+									<input type="radio" name="moneyOfTheRepair" ng-model="info.moneyOfTheRepair" ng-value = 1>
+									<i></i>Ja <div class="control__indicator"></div></label>
+						 		<label class=" radio control control--radio no-margin">
+									<input type="radio" name="moneyOfTheRepair" ng-model="info.moneyOfTheRepair" ng-value = 0 >
+									<i></i>Nein<div class="control__indicator"></div></label>
+								<section class=" col-sm-12 no-padding hiden-accident" id="checkIbanArea" ng-show="info.moneyOfTheRepair == 1">
+									<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="Kontoinhaber"  ng-model="info.accountOwner"/>
+									</section>
+									<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="IBAN" ng-blur="checkIban()" ng-class="ibanValidate" ng-model="info.iban"/>
+									</section>
+									<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="BIC" ng-blur="checkBic()" ng-class="bicValidate" ng-model="info.bic"/>
+									</section>
+								</section>	
+							</div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right" ng-show="info.vehicleRepaired === 1">
+							<label class="control-label col-sm-4" for="name" >Reparaturwerkstatt in der Nähe der PLZ</label>
+							<div class="col-sm-8">
+								<div class="col-sm-12 no-padding-left-right">
+									<div class="input-group input-group-lg">
+											<input class="form-control" type="text"  ng-model="info.nearPostCode" my-enter = "searchByPostCode()">
+											<span class="input-group-btn "> <button class="btn btn-success no-margin no-border-no-radius " type="button" ng-click = "searchByPostCode()"><i class="fa fa-search" aria-hidden="true"></i>  Suchen</button></span>
+									</div>
+								</div>
+								<div class="col-sm-12 no-padding-left-right">
+						                        <div class="control-group">
+									                    <label class="display-block control control--checkbox">
+									                        <input type="checkbox"  ng-model="info.onlyBranded" /><i></i>nur markengebunden
+									                        <div class="control__indicator"></div>
+									                    </label>
+									               </div>
+							               </div>
+							     <div  ng-include src="'partials/webassistant/werkstattnetzs.html'" ></div> 
+							     <div class="col-sm-12 no-padding-left-right" ng-show="info.werkstattnetz">
+						                        <div class="control-group">
+									                    <label class="col-sm-12 control control--checkbox   no-margin checkbox-garage">
+									                        <input type="checkbox"  ng-model="info.workshop" /><i></i>Ich wünsche Kontaktaufnahme durch die Werkstatt
+									                        <div class="control__indicator margin-5"></div>
+									                    </label>
+									               </div>
+							               </div>
+							     
+							</div>
+						</section> 
+						
+					</fieldset>

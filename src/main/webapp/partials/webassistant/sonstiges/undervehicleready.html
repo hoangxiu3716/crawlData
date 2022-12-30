@@ -1,0 +1,14 @@
+					<section class="col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name" >Was ist geschehen?</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.whatHappenedOthers"
+								ng-options="data for data in dataWhatHappensOthers "  >
+									<option value=""></option>
+							</select>
+							<section class="col-md-12 hiden-accident" ng-show ="info.whatHappenedOthers == 'Sonstiges (Freitext)'">
+									<textarea id="name" class="form-control" rows="5" placeholder="Unfallschilderung" ng-model="info.accidentSignsOthers"> </textarea>
+							</section>
+						</div>
+					</section>
+					

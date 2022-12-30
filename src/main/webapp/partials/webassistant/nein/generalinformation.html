@@ -1,0 +1,75 @@
+	<div class="progress_line" ng-class="{progress_line_border : inProcess > 5}">
+		<fieldset class="ibox-content-with-line"   id="infoVehicleArea" ng-show="inProcess > 4"   >
+				<i ng-class="inProcess === 5 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#infoVehicleAreaContent')">Angaben zum Unfallgegner </label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding" for="name" ng-click="showHideElement('#infoVehicleAreaContent')" >Angaben &#228;ndern</label>
+				<!-- label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#infoVehicleAreaContent')">Was ist an Ihrem Fahrzeug beschädigt worden?</label> -->
+				<fieldset class="custom-customer-area padding-10 col-sm-12" id="infoVehicleAreaContent">
+					<fieldset class="border-area">
+						<section class="col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Versicherungsnummer</label>
+							<div class="col-sm-8">
+			                        <input id="name" class="form-control" placeholder="Versicherungsnummer" input-restrictor ng-model="info.insuranceNumber" />
+							</div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Kennzeichen*</label>
+							<div class="col-sm-8">
+			                        <input id="name" class="form-control" placeholder="Kennzeichen des Schädigers" uppercased ng-model="info.licencePlateNumberInjuredPerson" ng-blur="findByLicencePlateNumber()"/>
+			                        <section class="col-sm-12 no-padding-left-right" ng-show="showMileage == 2">
+			                          <div class="alert alert-warning-error"  >Unter den von Ihnen angegebenen Informationen kann leider kein Versicherter unseres Hauses identifiziert werden. Bitte wenden Sie sich an unsere Schadenhotline: 02203-5002160.</div>
+			                        </section>
+							</div>
+						</section>
+
+						<section class="col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Name</label>
+							<div class="col-sm-8">
+			                        <input id="name" class="form-control" placeholder="Name" ng-model="info.nameOffender"/>
+							</div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Vorname</label>
+							<div class="col-sm-8">
+			                        <input id="name" class="form-control" placeholder="Vorname" ng-model="info.forenameOffender"/>
+							</div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Adresse</label>
+		
+							<div class="col-sm-8">
+								<div class="col-sm-4 no-padding">
+			                        <input id="name" class="form-control" placeholder="Stra&szlig;e + Nr."  ng-model="info.streetOffender"/>
+		                    	</div>
+		                    	<div class="col-sm-4 no-padding">
+			                         <div angucomplete-alt id="PLZOffender"
+									  placeholder="PLZ"
+									  pause="300"
+									  selected-object="selectedPlzOffender"
+									  remote-api-handler="autoFillOrt"
+									  title-field="zcZip"
+									  minlength="1"
+									  description-field="zcLocationName"
+									  input-class="form-control form-control-small"
+									  match-class="highlight"
+									  input-changed="inputChangedName">
+									</div>
+		                    	</div>	
+		                    	<div class="col-sm-4 no-padding">
+			                        <input id="name" class="form-control" placeholder="Ort" ng-model="info.cityOffender"/>
+		                    	</div>
+							</div>
+						</section>
+					</fieldset>
+					Alle mit * gekennzeichneten	Felder sind	Pflichtfelder
+					<section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess != 5">
+								<button type="submit" value=""  class="btn btn-primary  no-margin "  ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        	   <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToUploadFile()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                    </section>
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess == 5">
+								<button type="submit" value=""  class="btn btn-primary  no-margin "  ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        	   <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToUploadFile()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                    </section>
+		</fieldset>
+	</div>

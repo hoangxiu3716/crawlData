@@ -1,0 +1,48 @@
+
+
+	
+	<div class="col-lg-12  padding-top-10  padding-bottom-50"  ng-show="!addArea">
+		<!-- widget div-->
+
+		     <div class="ibox-title">
+                    <h5>Makler</h5>
+					<button type="button" class="btn btn-primary pull-right no-margin"  ng-click="showAddArea()"><span >+ Makler hinzufügen</span></button>
+				</div>
+		<div class="ibox-content">
+			
+						<table ng-table="tableParams" class="footable table table-stripped toggle-arrow-tiny" show-filter="true">
+							<tr ng-repeat="data in datas"  >
+								 <td  data-title="'Kundenname'" sortable="'name'"   filter="{ 'name' : 'text'}"  >{{data.name}}</td>
+								 <td  data-title="'Telefon'" sortable="'phone'"  >{{data.phone}}</td>
+								 <td  data-title="'E-Mail'" sortable="'email'"  >{{data.email}}</td>
+								 <td  data-title="'Benutzername'"  >{{data.userInfo.username}}</td>
+								 <td  data-title="'Bearbeiten'"  class="with-50"> 
+										 <div align="center">
+											<button class="btn btn-small btn-primary center-block"
+													ng-click="detail(data);" value="" >
+												<i class='fa fa-info'  ></i>
+											</button>
+											</div>
+										</td>	
+										
+								 <td  data-title="'Passwort zur&uuml;cksetzen'"  class="with-50"> 
+										 <div align="center">
+											<button class="btn btn-small btn-primary center-block"
+													ng-click="dialogResetPass(data);" value="" >
+												<i class='fa fa-refresh'  ></i>
+											</button>
+											</div>
+										</td>			
+								  <td  data-title="'L&ouml;schen'"  class="with-50"> 
+										 <div align="center">
+											   <button class="btn btn-small btn-danger center-block" confirmed-click="deleteItem(data.id)"
+			                                            ng-confirm-click="Sind sie sicher, dass Sie diese Daten l&ouml;schen m&ouml;chten?">
+			                                        <i class='fa fa-times'></i>
+                                   				 </button>
+											</div>
+								   </td>			
+							</tr>
+							
+						</table>
+		</div>
+	</div>

@@ -1,0 +1,33 @@
+
+
+<div class="row">
+		<div class="col-lg-12  padding-top-10  padding-bottom-50 margin-top-30">
+			<!-- widget div-->
+			<div class="ibox-title">
+				<h5>Produkte</h5>
+			</div>
+			<div class="ibox-content">
+				<table ng-table="tableParamProductPharma"
+					class="footable table table-stripped toggle-arrow-tiny"
+					show-filter="true">
+					<tr ng-repeat="data in dataPharmaDetail">
+						 <td data-title="'Produkt w&auml;hlen'" >
+						 	<div class="control-group">
+			                    <label class="display-block control control--checkbox">
+			                        <input type="checkbox" ng-change="selectPharma(data)"  ng-model="basePharma.ids[data.id]" /><i></i>
+			                        <div class="control__indicator"></div>
+			                    </label>
+			                </div>
+						 </td>
+						<td data-title="'Name'" sortable="'name'"
+							filter="{ 'name' : 'text'}">{{data.name}}</td>
+						<td data-title="'Aktiv'" sortable="'active'">{{data.active
+							== true? "Ja" : "Nein" }}</td>
+							<td filter="{ 'pzn' : 'text'}" data-title="'PZN'" sortable="'placement'">{{data.pzn}}</td>
+					</tr>
+
+				</table>
+			</div>
+
+		</div>
+</div>

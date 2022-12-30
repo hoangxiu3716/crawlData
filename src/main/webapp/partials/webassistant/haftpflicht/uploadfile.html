@@ -1,0 +1,81 @@
+		<div class="progress_line"  ng-class="{progress_line_border : inProcess > 7}">
+		<fieldset class="ibox-content-with-line"   id="uploadFileArea"  ng-show="inProcess > 6">
+				<i ng-class="inProcess === 7 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#uploadFileAreaContent')">Überm ittlung von Fotos und Dokumenten (optional)</label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding" for="name" ng-click="showHideElement('#uploadFileAreaContent')" >Angaben &#228;ndern</label>
+				<label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#uploadFileAreaContent')">Gerne beschleunigen wir Ihre Regulierung mit aussagekräftigen Bildern und einem Kostenvoranschlag/Rechnung</label>
+				<fieldset class="custom-customer-area padding-10 col-sm-12"  id="uploadFileAreaContent">
+					<fieldset class="border-area" >
+						<section class="col-sm-12 no-padding-left-right " >
+							<div class="alert alert-info " >
+									<label class="control-label center " for="name" >Liegt Ihnen schon ein Kostenvoranschlag/Rechnung vor, laden Sie bitte die Datei/Foto hoch. Fotografieren
+										Sie den Fahrzeugschein und Detailaufnahmen des Schadens. Fertigen Sie, insofern realisierbar, ein 360°
+										Video an und laden Sie diese Dateien hoch.</label>
+							</div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right " >
+							<div class="col-sm-12" >
+								<div class="col-sm-4 center " > 
+									<div ngf-drop="onFileSelectOnly($files,'#image-file','Fahrzeugschein_')" ngf-select="onFileSelectOnly($files,'#image-file','Fahrzeugschein_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"><img src="images/image-file.png" id="image-file"  class="with-70-percent pointer"/>
+							        </div>
+							    </div>
+								<div class="col-sm-4 center " > 
+									<div ngf-drop="onFileSelectOnly($files,'#image-360','Rundumfoto_')" ngf-select="onFileSelectOnly($files,'#image-360','Rundumfoto_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"
+									        accept="image/*,video/*">
+											<video class="no-display with-70-percent pointer" id="video-360" controls ></video> <img src="images/image-360.png" id="image-360"  class="with-70-percent pointer"/>
+							        </div>
+								</div> 
+								<div class="col-sm-4 center " >
+									<div ngf-drop="onFileSelectOnly($files,'#image-photo1','Detailfoto1_')" ngf-select="onFileSelectOnly($files,'#image-photo1','Detailfoto1_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"><img src="images/image-photo1.png" id="image-photo1"  class="with-70-percent pointer"/></div>
+							     </div>
+							</div>
+							<div class="col-sm-12" >
+								<div class="col-sm-4 center " > 
+									<div ngf-drop="onFileSelectOnly($files,'#image-photo2','Detailfoto2_')"  ngf-select="onFileSelectOnly($files,'#image-photo2','Detailfoto2_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"><img src="images/image-photo2.png" id="image-photo2"  class="with-70-percent pointer"/></div>
+							   </div>
+							   <div class="col-sm-4 center " > 	<div ngf-drop="onFileSelectOnly($files,'#image-photo3','Detailfoto3_')" ngf-select="onFileSelectOnly($files,'#image-photo3','Detailfoto3_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"><img src="images/image-photo3.png" id="image-photo3"  class="with-70-percent pointer"/></div>
+								</div>
+							     <div class="col-sm-4 center " > <div ngf-drop="onFileSelectOnly($files,'#image-photo4','Detailfoto4_')" ngf-select="onFileSelectOnly($files,'#image-photo4','Detailfoto4_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"><img src="images/image-photo4.png" id="image-photo4"  class="with-70-percent pointer"/></div>
+								</div>
+							</div>
+							<div class="col-sm-12" >
+								<div class="col-sm-4 center " ></div> 
+								 
+								<div class="col-sm-4 center " >  <div ngf-drop="onFileSelectOnly($files,'#image-file-7','Kostenvoranschlag-Rechnung_')" ngf-select="onFileSelectOnly($files,'#image-file-7','Kostenvoranschlag-Rechnung_')"  class=" pointer" 
+									        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"><img src="images/image-file-7.png" id="image-file-7"  class="with-70-percent pointer"/></div>
+								</div>
+								<div class="col-sm-4 center " > </div> 
+							</div>		
+						</section>
+					</fieldset>
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess == 7">
+					<button type="submit" value=""  class="btn btn-primary  no-margin "  ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                    <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToContacts()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                </section>
+			</fieldset>
+		</div>
+<input id="pickChoice-image-file" type="file" 
+			ngf-select="onFileSelectOnly($files,'#image-file')"  
+			onclick="this.value=null"  style="display: none" />
+	<input id="pickChoice-image-360" type="file" 
+			ngf-select="onFileSelectOnly($files,'#image-360')"  
+			onclick="this.value=null" accept="image/*"  style="display: none" />
+	<input id="pickChoice-image-photo1" type="file" 
+			ngf-select="onFileSelectOnly($files,'#image-photo1')"  
+			onclick="this.value=null" accept="image/*"  style="display: none" />
+	<input id="pickChoice-image-photo2" type="file" 
+			ngf-select="onFileSelectOnly($files,'#image-photo2')"  
+			onclick="this.value=null" accept="image/*"  style="display: none" />
+	<input id="pickChoice-image-photo3" type="file" 
+			ngf-select="onFileSelectOnly($files,'#image-photo3')"  
+			onclick="this.value=null" accept="image/*"  style="display: none" />
+	<input id="pickChoice-image-photo4" type="file" 
+			ngf-select="onFileSelectOnly($files,'#image-photo4')"
+			onclick="this.value=null" accept="image/*"  style="display: none" />

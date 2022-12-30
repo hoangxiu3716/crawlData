@@ -1,0 +1,74 @@
+					<section class="col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name" >Was ist passiert?</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.whatHappened"
+								ng-options="data for data in dataWhatHappens "  >
+									<option value=""></option>
+							</select>
+							<section class="col-md-12 hiden-accident" ng-show ="info.whatHappened == 'Sonstiges (Freitext)'">
+									<textarea id="name" class="form-control" rows="5" placeholder="Unfallschilderung" ng-model="info.accidentSigns"> </textarea>
+							</section>
+						</div>
+					</section>
+					<div ng-hide="unfall.onlyForeignCar">
+					<section class="col-sm-12 no-padding-left-right" ng-hide="unfall.onlyOwnCar " >
+						<label class="control-label col-sm-4" for="name">Haben Sie noch einen weiteren Verkehrsteilnehmer geschädigt?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="injuredAnotherPassenger" ng-model="info.injuredAnotherPassenger" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="injuredAnotherPassenger" ng-model="info.injuredAnotherPassenger" disabled="{{unfall.onlyOwnCar}}" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+							<section class=" col-sm-12 no-padding hiden-accident"  ng-show="info.injuredAnotherPassenger == 1">
+								<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="Name"  ng-model="info.name"/>
+								</section>
+								<section class=" col-sm-12  " ng-show="info.injuredAnotherPassenger == 1">
+				                       	<input id="name" class="form-control" type="text" placeholder="Kennzeichen" uppercased ng-model="info.mark"/>
+								</section>
+								<section class=" col-sm-12  " ng-show="info.injuredAnotherPassenger == 1">
+				                       	<input id="name" class="form-control" type="text" only-digits  placeholder="Telefon" ng-model="info.phone"/>
+								</section>	
+							</section>
+						</div>
+					</section>
+					
+					<section class="col-sm-12 no-padding-left-right " >
+						<label class="control-label col-sm-4" for="name" >Wer ist das Fahrzeug gefahren?</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.whoDriving"
+								ng-options="data for data in dataWhoDrivings"  >
+									<option value=""></option>
+							</select>
+							<section class=" col-sm-12  hiden-accident" ng-show="info.whoDriving == 'Sonstiges (Name)'">
+			                       	<input id="name" class="form-control" type="text" placeholder="Name" ng-model="info.nameDriving"/>
+							</section>
+						</div>
+					</section>
+					
+					<section class=" col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name">Besitzt der Fahrer einen gültigen Führerschein?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="validDrivingLicense" ng-model="info.validDrivingLicense" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="validDrivingLicense" ng-model="info.validDrivingLicense" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>
+					<section class=" col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name">Stand der Fahrer zum Unfallzeitpunkt unter Einfluss von Alkohol, Medikamenten oder sonstigen Drogen?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="influence" ng-model="info.influence" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="influence" ng-model="info.influence" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>
+					</div>

@@ -1,0 +1,31 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header custom-corlor">
+                    <div class="animated fadeInRight m-t-xs">
+                        <img class="logo-header pointer" src="images/logo2.png"/>
+                    </div>
+            </li>
+             <li ui-sref-active="active"  ng-if="hasRole('ROLE_ADMIN')">
+                <a ui-sref="index.pharmacrawl" ui-sref-opts="{reload: true}"><i class="fa fa-lg fa-fw fa-users"></i>  <span class="nav-label"  >Platzierungen (t&auml;glich)</span> </a>
+            </li>
+             <li ui-sref-active="active"  ng-if="hasRole('ROLE_ADMIN')">
+                <a ui-sref="index.grouppharma" ui-sref-opts="{reload: true}"><i class="fa fa-lg fa-fw fa-users"></i>  <span class="nav-label"  >Produktgruppen</span> </a>
+            </li>
+            <li ui-sref-active="active"  ng-if="hasRole('ROLE_ADMIN')">
+                <a ui-sref="index.detailpharmaingroup" ui-sref-opts="{reload: true}"><i class="fa fa-lg fa-fw fa-users"></i>  <span class="nav-label"  >Sichtbarkeit (Durchschnitt)</span> </a>
+            </li>
+            <li ng-class="{active: $state.includes('profile')}" ng-show="hasRole('ROLE_ADMIN')">
+                <a href=""><i class="fa fa-lg fa-fw fa-user"></i> <span class="nav-label" >Profil</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('profile')}">
+                    <li ui-sref-active="active"><a ui-sref="profile.change" >Mein Profil ansehen</a></li>
+                    <li ui-sref-active="active"><a ui-sref="profile.changePassword" >Passwort ändern</a></li>
+                </ul>
+            </li>
+            
+
+
+        </ul>
+
+    </div>
+</nav>

@@ -1,0 +1,71 @@
+<section class=" col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Sind Daten von Zeugen vorhanden?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="witnessesAvailable" ng-model="info.witnessesAvailable" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="witnessesAvailable" ng-model="info.witnessesAvailable" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+							<section class="col-sm-12 no-padding hiden-accident "  ng-show ="info.witnessesAvailable == 1">
+									<div ng-show="showAreaWitnessesAvailable">
+									<section class="col-md-12 ">
+											<input type="text" class="form-control" placeholder="Name" ng-model="witnessesAvailable.name"/>
+									</section>
+									 <section class="col-sm-12 ">
+										<div class="col-sm-4 no-padding ">
+					                        <input id="name" class="form-control" placeholder="Stra&szlig;e + Nr."  ng-model="witnessesAvailable.street"/>
+				                    	</div>
+				                    	<div class="col-sm-4 no-padding">
+					                        <div angucomplete-alt id="witnessesAvailablePLZ"
+											  placeholder="PLZ"
+											  pause="300"
+											  selected-object="selectedWitnessesAvailablesPlz"
+											  remote-api-handler="autoFillOrt"
+											  title-field="zcZip"
+											  minlength="1"
+											  description-field="zcLocationName"
+											  input-class="form-control form-control-small"
+											  match-class="highlight"
+											  input-changed="inputChangedName">
+											</div>
+				                    	</div>	
+				                    	<div class="col-sm-4 no-padding">
+					                        <input id="name" class="form-control" placeholder="Ort" ng-model="witnessesAvailable.city"/>
+				                    	</div>
+			                    	</section>
+			                    	<section class="col-md-12 ">
+											<input type="text" only-digits class="form-control" placeholder="Telefon" ng-model="witnessesAvailable.phone"/>
+									</section>
+			                    	 <section class="col-sm-12 ">
+			                        	   <input type="submit" value="Zeuge speichern"  class="btn btn-primary width-100-percent no-margin "  ng-click="addWitnessesAvailable();showAreaWitnessesAvailable  = false"/>
+			                        </section>
+			                        </div>
+			                        <section class="col-sm-12 " ng-show="!showAreaWitnessesAvailable">
+			                        	   <input type="submit" value="Weiteren	Zeugen	hinzufügen"  class="btn btn-primary width-100-percent no-margin "  ng-click="showAreaWitnessesAvailable  = true"/>
+			                        </section>
+			                        <section class="col-sm-12 " ng-if="witnessesAvailables.length >0">
+			                        	<div ng-include  src="'partials/webassistant/witnessesavailable.html'"></div>
+			                        </section>
+							</section>	
+						</div>
+					</section>
+					<section class=" col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Wurde die Polizei informiert?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="policeInformed" ng-model="info.policeInformed" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="policeInformed" ng-model="info.policeInformed" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+							<section class="col-sm-12 no-padding hiden-accident" ng-show ="info.policeInformed == 1">
+								<section class="col-sm-12 " >
+										<input type="text" class="form-control" placeholder="Dienststelle" ng-model="info.department"/>
+								</section>
+								<section class="col-sm-12 " ng-show ="info.policeInformed == 1">
+										<input type="text" id="name" class="form-control" placeholder="Aktenzeichen" ng-model="info.fileNumber"/>
+								</section>	
+							</section>
+						</div>
+					</section>

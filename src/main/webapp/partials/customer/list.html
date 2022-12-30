@@ -1,0 +1,35 @@
+
+
+	
+	<div class="col-lg-12  padding-top-10  padding-bottom-50"  ng-show="!addArea">
+		<!-- widget div-->
+
+		     <div class="ibox-title">
+                    <h5>Kunde</h5>	
+                     <button type="button" id="importdataarea"  class="btn btn-primary pull-right no-margin"  ng-click="importData()" >+ Importieren</button>
+					<input id="pickChoic" type="file" 
+					ngf-select="onFileSelect($files)"  
+					onclick="this.value=null" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  class="btn btn-default no-margin pull-right" />		    
+                   
+			</div>
+		<div class="ibox-content">
+			
+						<table ng-table="tableParams" class="footable table table-stripped toggle-arrow-tiny" >
+							<tr ng-repeat="data in datas"  >
+								 <td  data-title="'Versicherungsnummer'"  >{{data.policyNumber}}</td>
+								 <td  data-title="'Nachname'"  >{{data.lastName}}</td>
+								 <td  data-title="'Vorname'"   >{{data.firstName}}</td>
+								 <td  data-title="'Startdatum'"   >{{data.startDate  | date:'dd/MM/yyyy HH: mm'}}</td>
+								 <td  data-title="'Bearbeiten'"  class="with-50"> 
+										 <div align="center">
+											<button class="btn btn-small btn-primary center-block"
+													ng-click="detail(data);" value="" >
+												<i class='fa fa-info'  ></i>
+											</button>
+											</div>
+										</td>				
+							</tr>
+							
+						</table>
+		</div>
+	</div>

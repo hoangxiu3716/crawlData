@@ -1,0 +1,32 @@
+	<div class="progress_line" ng-class="{progress_line_border : inProcess > 5}">
+		<fieldset class="ibox-content-with-line"   id="infoVehicleArea" ng-show="inProcess > 4"   >
+				<i ng-class="inProcess === 5 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#infoVehicleAreaContent')">Allgemeine Angaben </label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding" for="name" ng-click="showHideElement('#infoVehicleAreaContent')" >Angaben &#228;ndern</label>
+				<!-- label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#infoVehicleAreaContent')">Was ist an Ihrem Fahrzeug beschädigt worden?</label> -->
+				<fieldset class="custom-customer-area padding-10 col-sm-12" id="infoVehicleAreaContent">
+					<fieldset class="border-area">
+						<section class="col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Kennzeichen des Schädigers</label>
+							<div class="col-sm-8">
+			                        <input id="name" class="form-control" placeholder="Kennzeichen des Schädigers"  ng-model="info.licencePlateNumberInjuredPerson" ng-blur="findByLicencePlateNumber()"/>
+			                        <section class="col-sm-12 no-padding-left-right">
+			                          <div class="alert alert-warning-error" ng-show="showMileage ==2" >Bittte geben Sie ein gültiges Kennzeichen ein.</div>
+			                        </section>
+							</div>
+						</section>
+						<section class="col-sm-12 no-padding-left-right" ng-show="showMileage ==1">
+							<label class="control-label col-sm-4" for="name">Kilometerstand des eigenen Autos</label>
+							<div class="col-sm-8">
+			                        <input id="name" type="number" class="form-control"  placeholder="Kilometerstand des eigenen Autos" ng-model="info.mileage"/>
+							</div>
+						</section>
+				
+					</fieldset>
+					<section class="col-lg-12 no-padding-left-right padding-top18" ng-show="inProcess == 5">
+								<button type="submit" value=""  class="btn btn-primary  no-margin "  ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        	   <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToUploadFile()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                    </section>
+				</fieldset>
+		</fieldset>
+	</div>

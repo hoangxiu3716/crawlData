@@ -1,0 +1,52 @@
+<fieldset class="border-area" >
+						<section class="col-sm-12 no-padding-left-right " >
+							<div class="alert alert-warning" >
+									<label class="control-label " for="name" >Profitieren	Sie	von	unserem	Hagelkonzept:</label>
+									<ul>
+										<li>Zeitnahe	Terminierung	Ihrer	Fahrzeugbesichtigung</li>
+										<li>Besichtigung	Ihres	beschädigten	Fahrzeuges	durch	einen	neutralen	Sachverständigen</li>
+										<li>Sanfte	Instandsetzungsreparatur	zum	Erhalt	Ihres	Fahrzeugwertes</li>
+										<li>Kostenloser	Leihwagen	bei	Reparatur	</li>
+										<li>Hol- und	Bringservice kostenlos</li>
+										<li>Fahrzeugreinigung	innen	und	außen</li>
+										<li>7	Jahre	Garantie</li>
+									</ul>
+							</div>
+						
+						</section>
+						<section class=" col-sm-12 no-padding-left-right">
+							<label class="control-label col-sm-4" for="name">Wollen Sie Ihr Fahrzeug reparieren lassen?</label>
+							<div class="col-sm-8">
+		                       	<label class=" radio control control--radio no-margin">
+									<input type="radio" name="vehicleRepaired" ng-model="info.vehicleRepaired"  ng-change="clearDataWerkstattnetz()"  ng-value = 1>
+									<i></i>Ja <div class="control__indicator"></div></label>
+						 		<label class=" radio control control--radio no-margin">
+									<input type="radio" name="vehicleRepaired" ng-model="info.vehicleRepaired" ng-change="clearDataWerkstattnetz()" ng-value = 0 >
+									<i></i>Nein<div class="control__indicator"></div></label>
+							</div>
+						</section>
+						<section class=" col-sm-12 no-padding-left-right" ng-show="info.vehicleRepaired === 0">
+							<label class="control-label col-sm-4" for="name">Wollen Sie sich das Geld der Reparatur netto auszahlen lassen?</label>
+							<div class="col-sm-8">
+		                       	<label class=" radio control control--radio no-margin">
+									<input type="radio" name="moneyOfTheRepair" ng-model="info.moneyOfTheRepair" ng-value = 1>
+									<i></i>Ja <div class="control__indicator"></div></label>
+						 		<label class=" radio control control--radio no-margin">
+									<input type="radio" name="moneyOfTheRepair" ng-model="info.moneyOfTheRepair" ng-value = 0 >
+									<i></i>Nein<div class="control__indicator"></div></label>
+								<section class=" col-sm-12 no-padding hiden-accident" id="checkIbanArea" ng-show="info.moneyOfTheRepair == 1">
+									<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="Kontoinhaber"  ng-model="info.accountOwner"/>
+									</section>
+									<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="IBAN" ng-blur="checkIban()" ng-class="ibanValidate"  ng-model="info.iban"/>
+									</section>
+									<section class=" col-sm-12  ">
+				                       	<input id="name" class="form-control" type="text" placeholder="BIC"  ng-blur="checkBic()" ng-class="bicValidate" ng-model="info.bic"/>
+									</section>
+								</section>	
+							</div>
+						</section>
+	
+						
+					</fieldset>

@@ -1,0 +1,39 @@
+
+
+	
+	<div class="col-lg-12  padding-top-10  padding-bottom-50"  ng-show="!addArea">
+		<!-- widget div-->
+
+		     <div class="ibox-title">
+                    <h5>Teams</h5>
+					<button type="button" class="btn btn-primary pull-right no-margin"  ng-click="showAddArea()"><span >+ Teams hinzufügen</span></button>
+				</div>
+		<div class="ibox-content">
+			
+						<table ng-table="tableParams" class="footable table table-stripped toggle-arrow-tiny" show-filter="true">
+							<tr ng-repeat="data in datas"  >
+								 <td  data-title="'Flashscore'" sortable="'name'"   filter="{ 'nameOnFlashscore' : 'text'}"  >{{data.nameOnFlashscore}}</td>
+								 <td  data-title="'Wettportal'" sortable="'name'"   filter="{ 'nameOnWettportal' : 'text'}"  >{{data.nameOnWettportal}}</td>
+								 <td  data-title="'Bearbeiten'"  class="with-50"> 
+										 <div align="center">
+											<button class="btn btn-small btn-primary center-block"
+													ng-click="detail(data);" value="" >
+												<i class='fa fa-info'  ></i>
+											</button>
+											</div>
+										</td>	
+										
+		
+								  <td  data-title="'L&ouml;schen'"  class="with-50"> 
+										 <div align="center">
+											   <button class="btn btn-small btn-danger center-block" confirmed-click="deleteItem(data.id)"
+			                                            ng-confirm-click="Sind sie sicher, dass Sie diese Daten l&ouml;schen m&ouml;chten?">
+			                                        <i class='fa fa-times'></i>
+                                   				 </button>
+											</div>
+								   </td>			
+							</tr>
+							
+						</table>
+		</div>
+	</div>

@@ -1,0 +1,360 @@
+<div class="row">
+	<div class="col-lg-12 ">
+	<form class="smart-form border-1" id="form" name="form" ng-show="addArea">
+		
+			<div class="ibox-title">
+					<h5>{{heading}}</h5>
+                </div>
+			<fieldset class="ibox-content" >
+				<fieldset class="custom-customer-area padding-10">
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Kundennummer</label>
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.customerId"/>
+						</div>
+					</section>
+				
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" readonly for="name">Versicherungsnummer </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.policyNumber"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Startdatum </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.startDate  | date:'dd/MM/yyyy HH: mm'}}"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Nachname </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.lastName"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Vorname</label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.firstName"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Straße </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.street"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Nummer </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.number"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Postleitzahl </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.zip"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Stadt </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.city"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Email </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.email"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">HSN </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.hsn"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">TSN </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.tsn"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Model </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.model"/>
+	                    
+						</div>
+					</section>
+					<!-- section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Tsn </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.tsn"/>
+	                    
+						</div>
+					</section> -->
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Marke </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.brand"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Autokennzeichen </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.licencePlateNumber"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Datum der ersten Registrierung</label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.dateOfFirstRegistration | date:'dd/MM/yyyy HH: mm'}}"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Tarif  </label>
+	
+						<div class="col-lg-10">
+	                    		<input id="name" class="form-control" readonly value="{{info.tarif}}"/>
+						</div>
+					</section>
+
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Gestellnummer </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.chassisNumber"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Absetzbar </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.deductible"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Bereitschaftdienst </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.roadsideAssistance"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Haftpflichtdeckung </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.covertypLiability"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Teilkaskodeckung</label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.covertypPartiallyComprehensive"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Vollkaskodeckung </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.covertypFullyCoprehensiveInsurance"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">FU 2040 Beauftragter </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.fu2040Mandatory"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">FU 1020 Optional </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.fu1020Optional"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">FU 2040 Optional </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.fu2040Optional"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">FU 3060 Optional </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.fu3060Optional"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Leihwagen </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.rentalCar"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Werkstattauftrag </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.garageCommitment"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Rist Taker </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.ristTaker"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Akb Version </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.akbVersion"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Vertragsbeginn </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.firstContractBegin | date:'dd/MM/yyyy HH: mm'}}"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Geburtstag</label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.birthday | date:'dd/MM/yyyy HH: mm'}}"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Telefonnummer </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.phone"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Handynummer </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.mobile"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">VkSb</label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.vkSb"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">TkSb </label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly ng-model="info.tkSb"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Zeitstempel</label>
+	
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.timestamp | date:'dd/MM/yyyy HH: mm'}}"/>
+	                    
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">VN Kfz HIS</label>
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.vn_kfz_his == 1? 'Ja' : (info.vn_kfz_his ==0 ? 'Nein' : '')}}"/>
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Fahrleistung</label>
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.fahrleistung}}"/>
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Vertrag VorSchd Anz</label>
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.vertrag_vorSchd_anz}}"/>
+						</div>
+					</section>
+					<section class=" col-md-12 form-group">
+						<label class="control-label col-lg-2" for="name">Vertrag LetztVorschd Monat</label>
+						<div class="col-lg-10">
+	                        <input id="name" class="form-control" readonly value="{{info.vertrag_letztVorschd_monat}}"/>
+						</div>
+					</section>
+				
+				</fieldset>
+				
+				<footer class=" col-lg-12 no-boder padding-top-20 padding-bottom-20  " >
+				         <input type="button" value="Abbrechen" class="btn pull-right" ng-click="resetForm()"/>
+				</footer>
+	   				
+			</fieldset>
+	
+
+		</form>
+		
+		</div>
+		<div ng-include src="'partials/customer/list.html'"></div>	
+	</div>
+

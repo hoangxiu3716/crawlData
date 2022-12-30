@@ -1,0 +1,61 @@
+					
+					<section class="col-sm-12 no-padding-left-right " >
+						<label class="control-label col-sm-4" for="name" >Welches	Tier	war	es?	</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.animal"
+								ng-options="data for data in animalDatas "  >
+									<option value=""></option>
+							</select>
+							<section class=" col-sm-12  hiden-accident" ng-show="info.whoDriving == 'Sonstiges (Name)'">
+			                       	<input id="name" class="form-control" type="text" placeholder="Name" ng-model="info.nameDriving"/>
+							</section>
+						</div>
+					</section>
+					<section class=" col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name">Lag	eine	Kollision	mit	dem	Tier	vor?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="collisionAnimal" ng-model="info.collisionAnimal" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="collisionAnimal" ng-model="info.collisionAnimal" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>
+					<section class="col-sm-12 no-padding-left-right " >
+						<label class="control-label col-sm-4" for="name" >Wer ist das Fahrzeug gefahren?</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.whoDriving"
+								ng-options="data for data in dataWhoDrivings"  >
+									<option value=""></option>
+							</select>
+							<section class=" col-sm-12  hiden-accident" ng-show="info.whoDriving == 'Sonstiges (Name)'">
+			                       	<input id="name" class="form-control" type="text" placeholder="Name" ng-model="info.nameDriving"/>
+							</section>
+						</div>
+					</section>
+					
+					<section class=" col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name">Besitzt der Fahrer einen gültigen Führerschein?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="validDrivingLicense" ng-model="info.validDrivingLicense" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="validDrivingLicense" ng-model="info.validDrivingLicense" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>
+					<section class=" col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name">Stand der Fahrer zum Unfallzeitpunkt unter Einfluss von Alkohol, Medikamenten oder sonstigen Drogen?</label>
+						<div class="col-sm-8">
+	                       	<label class=" radio control control--radio no-margin">
+								<input type="radio" name="influence" ng-model="info.influence" ng-value = 1>
+								<i></i>Ja <div class="control__indicator"></div></label>
+					 		<label class=" radio control control--radio no-margin">
+								<input type="radio" name="influence" ng-model="info.influence" ng-value = 0 >
+								<i></i>Nein<div class="control__indicator"></div></label>
+						</div>
+					</section>

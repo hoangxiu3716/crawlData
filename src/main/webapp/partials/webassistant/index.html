@@ -1,0 +1,138 @@
+	<div id='toTop' class="pointer center">
+			<div id="clickTotopButon">
+				<i id="clickTotop" class="fa fa-angle-double-up fa-2x"></i>
+			</div>
+		</div>
+<div class="">	
+<div class="container">
+	<div class="col-lg-12 no-padding-left-right " id ="topArea">
+	<form class="smart-form border-1" id="form" name="form" >
+			<fieldset class="ibox-content" ng-show="inProcess < 3.5"  >
+			<label class="control-label col-lg-12" ng-if="login" for="name">Schadenart</label>
+			<label class="control-label col-lg-12" ng-if="!login" for="name">Identifikation und Schadenart</label>
+				<fieldset class="custom-customer-area  padding-left-20">
+				
+				<section class=" col-sm-12 no-padding-left-right form-group" ng-show="!fullLink" >
+					<i ng-class="inProcess === 1 ? 'fa fa-circle icon-process fa-2x' : 'fa fa-check-circle-o icon-process fa-2x'" ></i>
+					<label class="control-label col-lg-12" for="name">Sind Sie Versicherungsnehmer bei der AdmiralDirekt.de?</label>
+					<div class="col-lg-12">
+                       	<label class="col-sm-12 radio control control--radio"">
+							<input type="radio" name="radio" ng-model="info.insured" ng-change="changeProcess(2)" ng-value =1>
+							<i></i>Ja, ich bin Kunde bei der AdmiralDirekt.de<div class="control__indicator"></div></label>
+				 		<label class="col-sm-12 radio control control--radio"">
+							<input type="radio" name="radio" ng-model="info.insured" ng-value = 0 ng-change="chooseNein()">
+							<i></i>Nein, ich wurde von einem AdmiralDirekt.de-Kunden geschädigt<div class="control__indicator"></div></label>
+					</div>
+				</section>
+			
+				<section class=" col-sm-12 no-padding-left-right form-group" ng-if="info.insured == 1 && !fullLink ">
+					<i ng-class="inProcess === 2 ? 'fa fa-circle icon-process fa-2x' : 'fa fa-check-circle-o icon-process fa-2x'" ></i>
+					<label class="control-label col-lg-12" for="name">Ihre persönlichen Daten: </label>
+					<div class="col-lg-12">
+						<section class="col-lg-12 no-padding-left-right">
+                        	<input id="name" class="form-control" type="text" placeholder="Versicherungsschein-Nummer" ng-model="info.policyNumber"/>
+                        </section>
+                        <section class="col-lg-12 no-padding-left-right">
+                        	<input id="name" class="form-control" type="text" placeholder="Amtliches Kennzeichen" uppercased ng-model="info.licencePlateNumber"/>
+                        </section>
+                        <section class="col-lg-12 no-padding-left-right">
+                        	   <input type="submit" value="Daten überprüfen" id="auto-login"  class="btn btn-primary width-100-percent no-margin "  ng-click="login()"/>
+                        </section>
+					</div>
+				</section>
+				
+				<section class=" col-sm-12 no-padding-left-right form-group" ng-show="customer && info.insured"  id="inProcess3" >
+					<i ng-class="inProcess === 3 ? 'fa fa-circle icon-process fa-2x' : 'fa fa-check-circle-o icon-process fa-2x'" ></i>
+					<label class="control-label col-lg-12" for="name">Bitte wählen Sie Ihre Schadenart aus:</label>
+					<div class="col-lg-12">
+						
+						<div class="alert alert-warning" >{{messageLogin}}</div>
+                        <section class="col-lg-12 align-right no-padding-left-right align-center-mobile">
+                        	   <input type="submit" ng-repeat = "item in buttonTypeOfDamages" value="{{item}}"  class="btn btn-primary   "  ng-click="chooseTypeOfDamage(item)"/>
+                        </section>
+				           
+					</div>
+				</section>
+				<section class=" col-sm-12 no-padding-left-right form-group" ng-if="info.strangeVehicle">
+					<div class="col-lg-12">
+						<section class="col-lg-12 no-padding-left-right">
+                        	<input id="name" class="form-control" type="text" placeholder="Name" ng-model="info.strangeVehicleName"/>
+                        </section>
+                        <section class="col-lg-12 no-padding-left-right">
+                        	<input id="name" class="form-control" type="text" placeholder="Kennzeichen" uppercased ng-model="info.strangeVehicleLicenseNumber"/>
+                        </section>
+                        <section class="col-lg-12 no-padding-left-right">
+                        	<input id="name" class="form-control" type="text" placeholder="Telefonnummer" only-digits ng-model="info.strangeVehiclePhone"/>
+                        </section>
+                        <section class="col-lg-12 no-padding-left-right">
+                        	   <button value="Daten überprüfen"  class="btn btn-primary width-100-percent no-margin "  ng-click="nextToAccidentArea()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                        </section>
+				           
+					</div>
+				</section>
+				</fieldset>
+				
+	   				
+			</fieldset>
+			<div class="padding-top-10">
+				<div ng-if = "!info.typeOfDamage">
+					<div  ng-include src="'partials/webassistant/nein/accident.html'"></div>
+					<div  ng-include src="'partials/webassistant/nein/informationperson.html'"></div>
+					<div  ng-include src="'partials/webassistant/nein/generalinformation.html'"></div>
+					<div  ng-include src="'partials/webassistant/nein/uploadfile.html'"></div>
+					<div  ng-include src="'partials/webassistant/contacts.html'"></div>
+					<div  ng-include src="'partials/webassistant/nein/report.html'"></div>
+					
+				</div>
+				<div ng-if = "info.typeOfDamage && info.typeOfDamage == 'Haftpflicht'">
+					<div  ng-include  src="'partials/webassistant/haftpflicht/foreigncar.html'"></div>
+					<div  ng-include src="'partials/webassistant/accident.html'"></div>
+					<div  ng-include src="'partials/webassistant/informationvehicle.html'"></div>
+					<div  ng-include src="'partials/webassistant/uploadfile.html'" ></div>
+					<!-- div  ng-include src="'partials/webassistant/haftpflicht/informationperson.html'"></div>
+					<div  ng-include src="'partials/webassistant/haftpflicht/generalinformation.html'"></div>
+					<div  ng-include src="'partials/webassistant/haftpflicht/uploadfile.html'"></div-->
+					<div  ng-include src="'partials/webassistant/haftpflicht/report.html'"></div>
+				</div>
+				<div ng-if = "info.typeOfDamage && info.typeOfDamage != 'Haftpflicht'">
+					<div  ng-include ng-if="unfall.onlyForeignCar" src="'partials/webassistant/unfall/foreigncar.html'"></div>
+					<div  ng-include src="'partials/webassistant/accident.html'"></div>
+					<div  ng-include ng-if="unfall.both" src="'partials/webassistant/unfall/both.html'"></div>
+					<div  ng-include ng-hide="showAreaOfBeenDamaged || hideGlas || hideHagel" src="'partials/webassistant/informationvehicle.html'"></div>
+					<div  ng-include ng-hide="unfall.onlyForeignCar" src="'partials/webassistant/detailsonvehicle.html'"></div>
+					<div  ng-include src="'partials/webassistant/uploadfile.html'" ng-hide="hideHagel" ></div>
+					<div  ng-include ng-hide="unfall.onlyForeignCar" src="'partials/webassistant/contacts.html'"></div>
+					<div ng-if="info.typeOfDamage =='Unfall'" ng-include src="'partials/webassistant/unfall/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Sonstiges'" ng-include src="'partials/webassistant/sonstiges/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Hagel'" ng-include src="'partials/webassistant/hagel/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Sturm'" ng-include src="'partials/webassistant/sturm/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Glas'" ng-include src="'partials/webassistant/glas/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Einbruch / Diebstahl'" ng-include src="'partials/webassistant/einbruchdiebstahl/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Vandalismus'" ng-include src="'partials/webassistant/vandalismus/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Wildunfall'" ng-include src="'partials/webassistant/wildunfall/report.html'"></div>
+				</div>
+			</div>
+		</form>
+		
+		</div>
+	</div>
+	</div>	
+	<div class="loading" ng-show="showCustomLoading">Loading&#8230;</div>
+<script>
+$('#toTop').fadeIn();
+$("#clickTotopButon").click(function () {
+   //1 second of animation time
+   //html works for FFX but not Chrome
+   //body works for Chrome but not FFX
+   //This strange selector seems to work universally
+   $("html, body").animate({scrollTop: 0}, 1000);
+});
+
+$(window).scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#clickTotopButon').fadeIn();
+    } else {
+        $('#clickTotopButon').fadeOut();
+    }
+
+});</script>

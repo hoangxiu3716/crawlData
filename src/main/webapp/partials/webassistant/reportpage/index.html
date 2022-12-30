@@ -1,0 +1,26 @@
+<div class="row background-color-fff">
+<div  class=" background-color-fff">
+	<div class="padding-top-10">
+	<div class="col-lg-12 no-padding-left-right " id ="topArea">
+	<form class="smart-form border-1 background-color-fff" id="form" name="form" >
+				<div ng-if = "!info.typeOfDamage">
+					<div  ng-include src="'partials/webassistant/reportpage/nein/report.html'"></div>
+				</div>
+				<div ng-if = "info.typeOfDamage && info.typeOfDamage == 'Haftpflicht'">
+					<div  ng-include src="'partials/webassistant/reportpage/haftpflicht/report.html'"></div>
+				</div>
+				<div ng-if = "info.typeOfDamage && info.typeOfDamage != 'Haftpflicht'">
+					<div ng-if="info.typeOfDamage =='Unfall' " ng-include src="'partials/webassistant/reportpage/unfall/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Sonstiges'" ng-include src="'partials/webassistant/reportpage/sonstiges/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Hagel'" ng-include src="'partials/webassistant/reportpage/hagel/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Sturm'" ng-include src="'partials/webassistant/reportpage/sturm/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Glas'" ng-include src="'partials/webassistant/reportpage/glas/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Einbruch / Diebstahl'" ng-include src="'partials/webassistant/reportpage/einbruchdiebstahl/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Vandalismus'" ng-include src="'partials/webassistant/reportpage/vandalismus/report.html'"></div>
+					<div ng-if="info.typeOfDamage =='Wildunfall'" ng-include src="'partials/webassistant/reportpage/wildunfall/report.html'"></div>
+				</div>
+				</form>
+			</div>
+			</div>
+			</div>
+</div>			

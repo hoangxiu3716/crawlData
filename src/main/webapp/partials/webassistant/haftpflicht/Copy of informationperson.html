@@ -1,0 +1,107 @@
+		<div class="progress_line" ng-class="{progress_line_border : inProcess > 4}">
+		<fieldset class="ibox-content-with-line"  id="accidentArea"  ng-show="inProcess > 3"  >
+				<i ng-class="inProcess === 4 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '" ></i>
+				<label class="control-label col-sm-4 title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Angaben zu Ihrer Person </label>
+				<label class="control-label sub-header col-sm-8 sub-title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Angaben &#228;ndern</label>
+				<!-- label class="control-label col-sm-12 sub-title-color no-padding" for="name" ng-click="showHideElement('#accidentAreaContent')" >Was ist Ihnen passiert?</label> -->
+				<fieldset class="custom-customer-area padding-10 col-sm-12" id="accidentAreaContent">
+				<fieldset class="border-area">				
+					<section class="col-sm-12 no-padding-left-right ">
+									<label class="control-label col-sm-4" for="name">Schadentag *</label>
+									<div class="col-sm-8">
+				                           <div class="col-sm-12 no-padding-left-right">
+				                                    <div class="input-group">
+				                                        <span class="input-group-addon" onclick="$('#dayOfAccident').focus();"><i class="fa fa-calendar"></i></span>
+				                                        <div datetimepicker=""  maxdate = {{newdate}} data-ng-model="info.dayOfAccident">
+				                                            <input type="text" placeholder="DD.MM.YYYY" readonly="readonly"  id="dayOfAccident" name="dayOfAccident"
+				                                                   class="form-control" 
+				                                                   data-date-format="DD.MM.YYYY" >
+				                                        </div>
+				                                    </div>
+				
+				                        </div>
+				                         <div class="col-sm-12 no-padding-left-right">
+						                        <div class="control-group">
+									                    <label class="display-block control control--checkbox">
+									                        <input type="checkbox"  ng-model="info.dayOfAccidentUnknow" /><i></i>unbekannt
+									                        <div class="control__indicator"></div>
+									                    </label>
+									               </div>
+							               </div>
+									</div>
+					</section>				
+					<section class="col-sm-12 no-padding-left-right" >
+									<label class="control-label col-sm-4" for="name">Uhrzeit</label>
+									<div class="col-sm-8">
+				                           <div class="">
+				                                    <div class="input-group">
+				                                        <span class="input-group-addon" onclick="$('#timeOfAccident').focus();"><i class="fa fa-calendar"></i></span>
+				
+				                                        <div timepicker=""   data-ng-model="info.timeOfAccident">
+				                                            <input type="text" placeholder="HH:MM" readonly="readonly"  id="timeOfAccident" name="date"
+				                                                   class="form-control" 
+				                                                   data-date-format="HH:mm">
+				                                        </div>
+				                                    </div>
+				
+				                        </div>
+									</div>
+					</section>	
+					<section class="col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Name</label>
+						<div class="col-sm-8">
+		                        <input id="name" class="form-control" placeholder="Name" ng-model="info.name"/>
+						</div>
+					</section>
+					<section class="col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Vorname</label>
+						<div class="col-sm-8">
+		                        <input id="name" class="form-control" placeholder="Vorname" ng-model="info.forename"/>
+						</div>
+					</section>
+					<section class="col-sm-12 no-padding-left-right">
+						<label class="control-label col-sm-4" for="name">Adresse</label>
+	
+						<div class="col-sm-8">
+							<div class="col-sm-4 no-padding">
+		                        <input id="name" class="form-control" placeholder="Stra&szlig;e + Nr."  ng-model="info.street"/>
+	                    	</div>
+	                    	<div class="col-sm-4 no-padding">
+		                         <div angucomplete-alt id="PLZ"
+								  placeholder="PLZ"
+								  pause="300"
+								  selected-object="selectedPlz"
+								  remote-api-handler="autoFillOrt"
+								  title-field="zcZip"
+								  minlength="1"
+								  description-field="zcLocationName"
+								  input-class="form-control form-control-small"
+								  match-class="highlight"
+								  input-changed="inputChangedName">
+								</div>
+	                    	</div>	
+	                    	<div class="col-sm-4 no-padding">
+		                        <input id="name" class="form-control" placeholder="Ort" ng-model="info.city"/>
+	                    	</div>
+						</div>
+					</section>
+					<section class="col-sm-12 no-padding-left-right" >
+						<label class="control-label col-sm-4" for="name" >In welcher Umgebung hat sich der Schaden ereignet?</label>
+						<div class="col-sm-8">
+							<select id="iqTest" 
+								class=" form-control" ng-model="info.environment"
+								ng-options="data for data in environmentDatas "  >
+									<option value=""></option>
+							</select>
+						</div>
+					</section>
+				</fieldset>
+				
+				
+				</fieldset>
+				<section class="col-lg-12 no-padding-left-right padding-top18"  ng-show="inProcess == 4">
+						<button type="submit" value=""  class="btn btn-primary  no-margin " ng-click="backtotop()" ><i class='fa fa-angle-double-left'></i> Zurück	zum	Start</button>
+                        	   <button type="submit" value=""  class="btn btn-primary  no-margin pull-right "  ng-click="nextToInfoVehicle()">Weiter <i class='fa fa-angle-double-right'></i> </button>
+                        </section>
+			</fieldset>
+	</div>

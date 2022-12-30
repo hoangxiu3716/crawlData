@@ -1,0 +1,83 @@
+<form class="smart-form border-1 padding-top-10" id="form" name="form">
+<div class="row">
+	<div class="col-lg-12 " ng-show="addArea">
+		<fieldset class="ibox-content">
+				<h3>{{title}}</h3>
+				<div class="col-md-1 no-padding"></div>
+				<div class="col-md-10 no-padding">
+					<section class="col col-md-12">
+						<label class="control-label col-sm-4" for="name">Name*</label>
+						<div class="col-sm-8">
+							<div class="col-sm-12 no-padding">
+								<input class="form-control" placeholder="Name" ng-model="info.name" required/>
+							</div>
+						</div>
+					</section>
+					<section class="col col-md-12">
+						<label class="control-label col-sm-4" for="name"></label>
+						<div class="col-sm-8 inline-group">
+							<div class="control-group">
+								<label class="display-block control control--checkbox">
+									<input type="checkbox" ng-model="info.active" /><i></i><span>Aktiv</span>
+									<div class="control__indicator"></div>
+								</label>
+							</div>
+						</div>
+					</section>
+				<!-- 	<section class="col col-sm-12">
+						<label class="control-label col-sm-4" for="name">Art</label>
+						<div class="col-sm-8">
+							<select class=" form-control" ng-model="info.type">
+								<option value="" selected></option>
+								<option value="KEYWORD" selected>Keyword</option>
+								<option value="CATEGORY" selected>Category</option>
+								<option value="CROSS-SELLING" selected>Cross-Selling</option>
+							</select>
+						</div>
+					</section> -->
+					<section class="col col-md-12">
+						<label class="control-label col-sm-4" for="name">Produkte</label>
+						<div class="col-sm-8 ">
+							<div class="col-sm-12 element no-padding element-custom">
+								<button type="button" class="btn btn-primary pull-right btn-custom"
+									ng-click="dialogPharmaDatas()">
+									<span>Produkte hinzuf&uuml;gen</span>
+								</button>
+							</div>
+							<div class="col-sm-12 element no-padding element-custom">
+								<div ng-include src="'partials/grouppharma/selectedpharma.html'"></div>
+							</div>
+						</div>
+					</section>
+					<section class="col col-sm-12">
+						<label class="control-label col-sm-4" for="name">Shop</label>
+						<div class="col-sm-8">
+							<div class="col-sm-12 no-padding">
+								<div class="control-group">
+									<label ng-repeat="item in parsehubSetting | unique: 'url'"
+									class="display-block control control--checkbox"
+									ng-if="item.active">
+									<input type="checkbox"
+									ng-model="info.shops[item.id]" /><i></i><span
+									ng-class="item.active ? '' : 'errorColor'">{{item.url}}</span>
+									<div class="control__indicator"></div>
+								</label>
+								</div>
+							</div>
+						</div>
+					</section>
+					<footer
+						class="col col-sm-12 no-boder padding-top-20 padding-bottom-20 height-100-px">
+						<button type="button" class="btn btn-primary pull-right btn-custom"
+							ng-show="!edit" ng-disabled="form.$invalid" ng-click="save()">Speichern</button>
+						<button type="button" class="btn btn-primary pull-right btn-custom"
+							ng-show="edit" ng-disabled="form.$invalid" ng-click="update()">Aktualisieren</button>
+						<button type="button" class="btn pull-right"
+							ng-click="resetForm() ">Abbrechen</button>
+					</footer>
+				</div>
+		</fieldset>
+	</div>
+	<div ng-include src="'partials/grouppharma/list.html'"></div>
+</div>
+</form>

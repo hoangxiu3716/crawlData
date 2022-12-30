@@ -1,0 +1,130 @@
+
+<form class="smart-form border-1 padding-top-10" id="form" name="form">
+	<div>
+		<div class="ibox-title">
+			<h5>Filteroptionen</h5>
+		</div>
+		<fieldset class="ibox-content">
+			<div class="col-md-1 no-padding"></div>
+			<div class="col-md-10 no-padding">
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-sm-4" for="name">Produktgruppe</label>
+					<div class="col-lg-8">
+							<select class=" form-control" ng-options="item as item.name for item in groupPharmas track by item.id" ng-model="search.group" ng-change="getProductByGroup()">
+						<option value="" >Gruppe w&auml;hlen</option>
+					</select>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-sm-4" for="name">Produkte*</label>
+					<div class="col-lg-8">
+						<div class="control-group filter-product-area">
+							<div class="col-sm-6 no-padding" ng-repeat="item in products">
+								<label 
+									class="display-block control control--checkbox"
+									ng-if="item.active && item.pzn">
+									<input type="checkbox"
+									ng-model="search.productPzn[item.pzn]" /><i></i><span
+									ng-class="item.active ? '' : 'errorColor'">{{item.pzn}}</span>
+									<div class="control__indicator"></div>
+								</label>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-sm-4" for="name">Keyword</label>
+					<div class="col-lg-8">
+						<div class="control-group">
+							<select class=" form-control" ng-model="search.pharmaSettingId" ng-change="getPharmaSetting()">
+						<option value="">Art</option>
+						<optgroup label="Keyword">
+							<option ng-repeat="item in pharmaSetting | filter:{type:'KEYWORD'}"  value="{{item.id}}">{{item.name}}</option>
+						</optgroup>
+						<optgroup label="Kategorie">
+							<option ng-repeat="item in pharmaSetting | filter:{type:'CATEGORY'}"  value="{{item.id}}">{{item.name}}
+							</option>
+						</optgroup>
+						<optgroup label="Cross-Selling">
+							<option ng-repeat="item in pharmaSetting | filter:{type:'CROSS-SELLING'}" value="{{item.id}}">{{item.name}}
+							</option>
+						</optgroup>
+					</select>
+						</div>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-sm-4" for="name">Shop</label>
+					<div class="col-lg-8">
+						<div class="control-group filter-product-area">
+					<div class="col-sm-6 no-padding" ng-repeat="item in parsehubSetting | unique: 'url'">
+								<label class="display-block control control--checkbox"
+									ng-if="item.active">
+									<input type="checkbox"
+									ng-model="search.shop[item.url]" /><i></i><span
+									ng-class="item.active ? '' : 'errorColor'">{{item.url}}</span>
+									<div class="control__indicator"></div>
+								</label>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-sm-4" for="name">Zeitraum*</label>
+					<div class="col-sm-4">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<div datetimepicker="" ng-model="search.fromTime" required>
+								<input type="text" placeholder="DD.MM.YYYY "  id="fromTime"
+									name="fromTime" class="form-control"
+									data-date-format="DD.MM.YYYY ">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<div datetimepicker="" ng-model="search.toTime" required>
+								<input type="text" placeholder="DD.MM.YYYY " id="toTime"
+									name="toTime" class="form-control"
+									data-date-format="DD.MM.YYYY ">
+							</div>
+						</div>
+					</div>
+				</div>
+				</section>
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-sm-4" for="name">Preis</label>
+					<div class="col-sm-4">
+					<div class="form-group">
+							<input placeholder="Preis von" type="number" min="0.1"
+										step="0.01" class=" form-control" ng-model="search.fromPrice" />
+					</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+								<input placeholder="Preis bis" type="number" min="0.1"
+									step="0.01" class=" form-control" ng-model="search.toPrice" />
+						</div>
+					</div>
+				</section>
+				<footer
+					class=" col-lg-12 no-boder padding-top-20 padding-bottom-20  ">
+					<label class="control-label col-sm-4" for="name"></label>
+					<div class="col-sm-4">
+					<button type="submit" class="btn btn-primary btn-custom"
+						ng-click="resetAllData()">Alle Filter l&ouml;schen</button>
+					</div>
+					
+					<button type="submit" ng-disabled="form.$invalid " class="btn btn-primary pull-right btn-custom"
+						ng-click="pharmaDetail()">Anwenden</button>
+					<button type="button" class="btn pull-right"
+						ng-click="closeDialog()">Abbrechen</button>
+				</footer>
+			</div>
+		</fieldset>
+	</div>
+</form>

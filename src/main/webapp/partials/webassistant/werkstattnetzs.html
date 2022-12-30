@@ -1,0 +1,25 @@
+<section class="col-sm-12 no-padding-left-right hiden-accident" ng-show="werkstattnetzs.length>0">
+	<div class="col-sm-6 margin-bottom-15px" ng-repeat = " data in werkstattnetzs" id="werkstattId" >
+		<div class="row">
+			<label class=" radio control control--radio no-margin padding-left-29">
+					<input type="radio"  ng-model="info.werkstattnetz" 
+							ng-value="{{data}}"  >
+						<i></i><div class="control__indicator"></div> WERKSTATT | {{data.werkstattId}} | {{data.werkstatt}}</label> 
+		</div>
+		<div class="col-sm-12" ng-show="data.name">
+				{{data.name}}
+		</div>
+			<div class="col-sm-12" ng-show="data.strasse">
+				{{data.strasse}}
+			</div>
+			<div class="col-sm-12" ng-show="data.plz || data.ort">
+				{{data.plz}} {{data.ort}}
+			</div>
+			<div class="col-sm-12" ng-show="data.telefon">
+				{{data.telefon}} 
+			</div>
+			<div class="col-sm-12" >
+				ca. {{data.distanz | number: 2}} km
+			</div>
+	</div>
+</section>

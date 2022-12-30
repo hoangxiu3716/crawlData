@@ -1,0 +1,18 @@
+		<div class="ibox-content">
+			<table ng-table="tableParams" class="table ng-table-responsive pointer"
+				show-filter="true">
+				<tr ng-repeat="item in dataTable">
+					<td sortable="'importDate'" data-title="'Datum'">{{item.importDate | date : dd.MM.yyyy}}</td>
+					<td sortable="'shop'" data-title="'Shop'">{{item.parsehubName}}</td>
+					<td filter="{ 'name' : 'text'}" data-title="'Produkt'">{{item.name}}</td>
+					<td filter="{ 'pzn' : 'text'}" data-title="'PZN'">{{item.pzn}}</td>
+					<td data-title="'AVP'">{{item.fullPrice ? (convertPriceToDouble(item.fullPrice) + '&euro;') : '-'}}</td>
+					<td data-title="'Price'">{{item.priceInDouble ? ((item.priceInDouble | number) +'&euro;') : '-'}}</td>
+					<td data-title="'Discount'">{{item.discount ? item.discount + ' %' : '-'   }}</td>
+					<td sortable="'quantity'" filter="{ 'quantity' : 'text'}"
+						data-title="'Menge'">{{item.quantity}}</td>
+					<td data-title="'Type'">{{convertKeyword(item.keyword)}}</td>
+					<td sortable="'sequenceByKeyword'" data-title="'Platzierung'">{{item.sequenceByKeyword}}</td>
+				</tr>
+			</table>
+		</div>

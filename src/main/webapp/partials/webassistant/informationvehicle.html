@@ -1,0 +1,215 @@
+
+<div class="progress_line"
+	ng-class="{progress_line_border : inProcess > 5}">
+	<fieldset class="ibox-content-with-line" id="infoVehicleArea"
+		ng-show="inProcess > 4">
+		<i
+			ng-class="inProcess === 5 ? 'fa fa-circle icon-process-line fa-2x ' : 'fa fa-check-circle-o icon-process-line fa-2x '"></i>
+		<label class="control-label col-sm-4 title-color no-padding"
+			for="name" ng-click="showHideElement('#infoVehicleAreaContent')">Informationen
+			zum Fahrzeug</label>
+			<label class="control-label sub-header col-sm-8 sub-title-color no-padding none-display" for="name" id="infoVehicleAreaContentState" ng-click="showHideElement('#infoVehicleAreaContent')" >Angaben &#228;ndern</label>
+			<label
+			class="control-label col-sm-12 sub-title-color no-padding" for="name"
+			ng-click="showHideElement('#infoVehicleAreaContent')"
+			ng-hide="unfall.onlyForeignCar">Was ist an Ihrem Fahrzeug
+			beschädigt worden?</label> <label
+			class="control-label col-sm-12 sub-title-color no-padding" for="name"
+			ng-click="showHideElement('#infoVehicleAreaContent')"
+			ng-show="unfall.onlyForeignCar">Was ist an dem Fahrzeug
+			beschädigt worden?</label>
+		<fieldset class="custom-customer-area padding-10"
+			id="infoVehicleAreaContent">
+			<fieldset class="border-area">
+				<section class="col-sm-12 no-padding-left-right">
+					<label class="control-label col-sm-4" for="name">Hersteller
+						/ Fabrikat</label>
+					<div class="col-sm-8">
+						<select id="iqTest" class=" form-control"
+							ng-model="info.manufacturer"
+							ng-options="data as data.name for data in fzgFabrikats track by data.id"
+							ng-change="changeManufacturer()">
+							<option value=""></option>
+						</select>
+					</div>
+				</section>
+				<section class="col-sm-12 no-padding-left-right">
+					<label class="control-label col-sm-4" for="name">Modell /
+						Typ</label>
+					<div class="col-sm-8">
+						<select id="iqTest" class=" form-control" ng-model="info.model"
+							ng-options="data as data.bezeichnung for data in models track by data.id ">
+							<option value=""></option>
+						</select>
+						<div class="control-group" ng-show="unfall.onlyForeignCar">
+							<label class="display-block control control--checkbox"> <input
+								type="checkbox" ng-model="info.noInfoInjured"
+								ng-change="resetModel()" /><i></i>Es liegen keine Informationen
+								zum Fahrzeug des Geschädigten vor
+								<div class="control__indicator"></div>
+							</label>
+						</div>
+					</div>
+				</section>
+			</fieldset>
+			<fieldset class="border-area"
+				ng-show="(info.manufacturer && info.model) || info.noInfoInjured">
+				<label class="control-label col-sm-12" for="name">Bitte
+					markieren Sie den Schadenbereich am Fahrzeug und wählen Sie alle
+					beschädigten Bauteile aus </label>
+				<section
+					class="col-sm-12 no-padding-left-right center background-color-fff hide-mobile">
+					<img id="QuickcheckMapArea" class="rwdimgmap"
+						src="images/quickcheck-.jpg" border="0" alt="" width="520"
+						height="282" usemap="#QuickcheckMap">
+					<map name="QuickcheckMap">
+						<area shape="poly" onmouseover="changeCssMapArea('seite')"
+							onmouseout="changeCssMapArea('')"
+							coords="269,141,454,96,424,192,257,231" href="javascript:void(0)"
+							ng-click="changeDamageArea('Seite')" alt="Seite" title="Seite">
+						<area shape="poly" onmouseover="changeCssMapArea('innenraum')"
+							onmouseout="changeCssMapArea('')"
+							coords="272,136,323,69,418,49,459,70,455,91"
+							href="javascript:void(0)"
+							ng-click="changeDamageArea('Innenraum')" alt="Innenraum"
+							title="Innenraum">
+						<area shape="poly" onmouseover="changeCssMapArea('dach')"
+							onmouseout="changeCssMapArea('')"
+							coords="379,47,320,66,219,14,307,2,394,18,441,49"
+							href="javascript:void(0)" ng-click="changeDamageArea('Dach')"
+							alt="Dach" title="Dach">
+						<area shape="poly" onmouseover="changeCssMapArea('heck')"
+							onmouseout="changeCssMapArea('')"
+							coords="421,28,463,39,517,79,513,148,490,172,432,195,462,100,454,92,459,69"
+							href="javascript:void(0)" ng-click="changeDamageArea('Heck')"
+							alt="Heck" title="Heck">
+						<area shape="poly" onmouseover="changeCssMapArea('glas')"
+							onmouseout="changeCssMapArea('')"
+							coords="258,133,174,101,132,67,214,16,318,65"
+							href="javascript:void(0)" alt="Glas" title="Glas"
+							ng-click="changeDamageArea('Glas')">
+						<area shape="poly" onmouseover="changeCssMapArea('front')"
+							onmouseout="changeCssMapArea('')"
+							coords="131,66,165,95,259,134,271,136,273,151,262,221,256,238,211,269,167,255,106,252,20,208,4,177,11,125,48,90"
+							href="javascript:void(0)" ng-click="changeDamageArea('Front')"
+							alt="Front" title="Front">
+					</map>
+
+				</section>
+				<section
+					class="col-sm-12 no-padding-left-right center background-color-fff show-mobile">
+					<img id="QuickcheckMapAreaMobile" class="rwdimgmap"
+						src="images/quickcheck-.jpg" border="0" alt="" width="250"
+						height="135" usemap="#QuickcheckMapMobile">
+					<map name="QuickcheckMapMobile">
+						<area shape="poly" onmouseover="changeCssMapArea('seite')"
+							onmouseout="changeCssMapArea('')"
+							coords="129,68,219,46,204,92,124,111" href="javascript:void(0)"
+							ng-click="changeDamageArea('Seite')" alt="Seite" title="Seite">
+						<area shape="poly" onmouseover="changeCssMapArea('innenraum')"
+							onmouseout="changeCssMapArea('')"
+							coords="131,65,155,33,201,23,221,33,219,43"
+							href="javascript:void(0)"
+							ng-click="changeDamageArea('Innenraum')" alt="Innenraum"
+							title="Innenraum">
+						<area shape="poly" onmouseover="changeCssMapArea('dach')"
+							onmouseout="changeCssMapArea('')"
+							coords="182,22,154,31,105,6,148,0,190,8,212,23"
+							href="javascript:void(0)" ng-click="changeDamageArea('Dach')"
+							alt="Dach" title="Dach">
+						<area shape="poly" onmouseover="changeCssMapArea('heck')"
+							onmouseout="changeCssMapArea('')"
+							coords="203,13,223,18,249,38,247,71,236,82,208,94,223,48,219,44,221,33"
+							href="javascript:void(0)" ng-click="changeDamageArea('Heck')"
+							alt="Heck" title="Heck">
+						<area shape="poly" onmouseover="changeCssMapArea('glas')"
+							onmouseout="changeCssMapArea('')"
+							coords="124,64,83,48,63,32,103,7,153,31"
+							href="javascript:void(0)" alt="Glas" title="Glas"
+							ng-click="changeDamageArea('Glas')">
+						<area shape="poly" onmouseover="changeCssMapArea('front')"
+							onmouseout="changeCssMapArea('')"
+							coords="63,31,79,45,125,64,130,65,131,72,126,106,123,114,101,129,80,122,51,121,9,100,1,85,5,60,23,43"
+							href="javascript:void(0)" ng-click="changeDamageArea('Front')"
+							alt="Front" title="Front">
+					</map>
+
+				</section>
+				<section class="col-sm-12 no-padding-left-right"
+					ng-show="info.valueDamageComponent && hasRole('ROLE_EMPLOYEES')">
+					<label class="control-label col-sm-12" for="name">Schadensh&ouml;he: Erneuern {{info.valueDamageComponent.totalReNew | number:2}}&euro;, Reparatur {{info.valueDamageComponent.totalReair | number:2}}&euro;, Durchschnitt {{info.valueDamageComponent.average | number:2}}&euro;</label>
+				</section>
+				<section class="col-sm-12 no-padding-left-right"
+					ng-show="components.length > 0">
+					<section class="col-sm-12 hiden-accident background-e8e8e8">
+						<div class="col-sm-4" ng-repeat="component in components">
+							<div class="control-group">
+								<label class="display-block control control--checkbox">
+									<input type="checkbox"
+									ng-model="info.damageItems[component.id]"
+									ng-true-value="'{{component.name}}'" ng-false-value=""
+									ng-change="calculatorDamageComponent()" /><i></i>{{component.name}}
+									<div class="control__indicator"></div>
+								</label>
+							</div>
+						</div>
+					</section>
+
+				</section>
+				
+				<section class="col-sm-12 no-padding-left-right" ng-show="info.valueDamageComponent && !hasRole('ROLE_EMPLOYEES') && false">
+					<section class="col-sm-12 hiden-accident background-e8e8e8">
+					<label><b>Abfrage
+								Wiederbeschaffungswert durchführen</b><br>
+							Mit dem Klick auf Abfrage starten können Sie eine kostenpflichtige Abfrage des Wiederbeschaffungswerts durchführen.
+						</label>
+						<br>
+						<button type="submit" value="" class="btn btn-primary  no-margin "
+						ng-click="showInzahlungnahme()">Abfrage starten <i class='fa fa-angle-double-right'></i>
+						</button>
+					</section>
+				</section>
+				<!-- section class="col-sm-12 " >
+				               <div ng-include  src="'partials/webassistant/damageitems.html'"></div>
+				        </section -->
+			</fieldset>
+			
+			<section class="col-lg-12 no-padding-left-right padding-top18"
+				ng-show="inProcess != 5">
+				<button type="submit" value="" class="btn btn-primary  no-margin "
+					ng-click="showHideElement('#accidentAreaContent')">Angaben ändern
+					<i class='fa fa-angle-up'></i> 
+				</button>
+				<button type="submit" value=""
+					class="btn btn-primary  no-margin pull-right "
+					ng-click="showHideElement('#detailsVehicleAreaContent','true')">
+					Weiter <i class='fa fa-angle-double-right'></i>
+				</button>
+			</section>
+		</fieldset>
+		<section class="col-lg-12 no-padding-left-right padding-top18"
+			ng-show="inProcess == 5">
+			<button type="submit" value="" class="btn btn-primary  no-margin "
+				ng-click="backtotop()">
+				<i class='fa fa-angle-double-left'></i> Zurück zum Start
+			</button>
+			<button type="submit" value="" class="btn btn-primary  no-margin "
+				ng-click="showHideElement('#accidentAreaContent')">
+				<i class='fa fa-angle-up'></i> Angaben ändern
+			</button>
+			<button type="submit" value=""
+				class="btn btn-primary  no-margin pull-right "
+				ng-click="nextToDetailsVehicle()">
+				Weiter <i class='fa fa-angle-double-right'></i>
+			</button>
+		</section>
+	</fieldset>
+</div>
+<script>
+	var changeCssMapArea = function(value) {
+		$("#QuickcheckMapArea").attr("src",
+				"images/quickcheck-" + value + ".jpg");
+		$("#QuickcheckMapAreaMobile").attr("src",
+				"images/quickcheck-" + value + ".jpg");
+	}
+</script>

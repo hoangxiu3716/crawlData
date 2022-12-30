@@ -1,0 +1,94 @@
+<!-- col -->
+<div class="row no-padding">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <h1 class="page-title txt-color-blueDark">
+            <!-- PAGE HEADER -->
+            USER
+        </h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+        <!-- Button trigger modal -->
+        <a ui-sref="admin.createuser" class="btn btn-primary pull-right header-btn hidden-mobile">
+            <i class="fa fa-plus"></i>
+            ADD
+        </a>
+    </div>
+</div>	
+<!-- end col -->
+
+<!-- widget grid -->
+<section class="">
+
+    <!-- row -->
+    <div class="row no-padding">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" data-widget-editbutton="false">
+
+                <!-- widget div-->
+                <div>
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <table class="table table-striped table-bordered table-hover table-custom" locale="de"
+                               width="100%" tr-ng-grid="" items="userList" page-items="pagingOptions.pageSize"
+                               total-items="totalElements"
+                               on-data-required="onServerSideItemsRequested(currentPage, filterBy, filterByFields, orderBy, orderByReverse)"
+                               enable-filtering="false" enable-sorting="false">
+                            <thead>
+                            <tr>
+                                <th class="hasinput" field-name="username" display-name="Username" enable-filtering="true"></th>
+                                <th class="hasinput" field-name="fullname" display-name="Fullname" enable-filtering="true"></th>
+                                <th class="hasinput" field-name="roles" display-name="Roles" enable-filtering="true"></th>
+                                <th enable-filtering="false" enable-sorting="false" cell-width="40px">
+                                    <div class="tr-ng-title">Edit</div>
+                                </th>
+                                <th enable-filtering="false" enable-sorting="false" cell-width="40px">
+                                    <div class="tr-ng-title">Delete</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td field-name="username">
+                                    {{gridDisplayItem.username}}
+                                </td>
+                                <td field-name="roles">
+                                    <span>{{gridItem.displayRoles}}</span>
+                                </td>
+                                <td class="td-action">
+                                    <!--
+                                    <button class="btn btn-primary" ng-click="if (confirm('Sind Sie sicher, dass Sie diese Daten löschen wollen?')) delete({{gridItem.id}});">
+                                        Delete
+                                    </button>
+                                    -->
+                                    <button class="btn btn-small btn-primary center-block" ng-click="editUser(gridItem)">
+                                        <i class='fa fa-pencil'></i>
+                                    </button>
+                                </td>
+                                <td class="td-action">
+                                    <!--
+                                    <button class="btn btn-primary" ng-click="if (confirm('Sind Sie sicher, dass Sie diese Daten löschen wollen?')) delete({{gridItem.id}});">
+                                        Delete
+                                    </button>
+                                    -->
+                                    <button class="btn btn-small btn-danger center-block " confirmed-click="deleteUser(gridItem)"
+                                            ng-confirm-click="Are you sure want to delete this data?">
+                                        <i class='fa fa-times'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+

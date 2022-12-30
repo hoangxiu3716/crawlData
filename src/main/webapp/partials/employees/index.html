@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-lg-12 ">
+	<form class="smart-form border-1" id="form" name="form">
+		
+			<div class="ibox-title">
+					<h5>Wettportal</h5>
+                </div>
+			<fieldset class="ibox-content" >
+				<fieldset class="custom-customer-area padding-10">
+				<section class=" col-md-12 form-group">
+					<label class="control-label col-lg-2" for="name">Quotendifferenz: </label>
+					<div class="col-lg-8">
+                        <input id="name" class="form-control" type="number" ng-model="info.quotes"/>
+					</div>
+				</section>
+				</fieldset>
+				<footer class=" col-lg-10 no-boder padding-top-20 padding-bottom-20  " >
+		            <input type="submit" value="American Football abrufen" class="btn btn-primary pull-right" ng-disabled="form.$invalid" ng-click="football()"/>
+		            <input type="button" value="Tennis abrufen" class="btn pull-right" ng-click="resetForm()"/>
+				</footer>
+			</fieldset>
+		</form>
+		</div>
+	</div>
+

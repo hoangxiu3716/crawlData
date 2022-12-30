@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-lg-12 ">
+	<form class="smart-form border-1" id="form" name="form">
+			<div class="ibox-title">
+					<h5>{{heading}}</h5>
+                </div>
+			<fieldset class="ibox-content" >
+				<fieldset class="custom-customer-area padding-10">
+					<section class=" col-sm-12 form-group">
+					<input id="pickChoic" type="file" 
+						ngf-select="onFileSelect($files)"  
+						onclick="this.value=null" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  class="btn btn-default float-left  " />
+					<button type="button" id="importdataarea"  class="btn btn-primary float-left  "  ng-click="buildData()" >+ Export Data Cdp</button>
+					<!-- button type="button" id="importdataarea"  class="btn btn-primary float-left  "  ng-click="buildDataSui4j()" >+ Export Data Sui </button>	 -->
+					</section>
+					<section class="col-sm-12 ">
+                        <div class="control-group">
+			                    <label class="display-block control control--checkbox">
+			                        <input type="checkbox"  ng-model="info.delay" readonly="readonly" /><i></i>Delay
+			                        <div class="control__indicator"></div>
+			                    </label>
+			               </div>
+	               </section>
+	               <section class="col-sm-12 " ng-show="info.reportId">
+                        <div class="control-group">
+			                    <label class="display-block control control--checkbox">
+			                        <a href="" ng-click="download()" >click here to download</a>
+			                    </label>
+			               </div>
+	               </section>
+				</fieldset>
+			</fieldset>
+	
+			
+		</form>
+		
+		</div>
+	</div>
+<div class="loading" ng-show="showCustomLoading">Loading&#8230;</div>

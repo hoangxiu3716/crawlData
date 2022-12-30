@@ -1,0 +1,247 @@
+
+<div>
+	<fieldset class="ibox-content-with-line">
+		<label class="control-label col-sm-12 title-color no-padding center" >Inzahlungnahme
+			Angebot für Fahrzeug erhalten</label>
+		<fieldset class="custom-customer-area padding-10">
+			<fieldset class="border-area">
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<select id="iqTest" class=" form-control"
+								ng-model="info.manufacturer"
+								ng-options="data as data.name for data in fzgFabrikats track by data.id "
+								ng-change="changeManufacturer()">
+								<option value=""></option>
+							</select>
+						</div>
+						<div class="col-sm-6">
+							<select id="iqTest" class=" form-control" ng-model="info.model"
+								ng-options="data as data.bezeichnung for data in models track by data.id ">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</section>
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<input id="name" class="form-control" type="text"
+								placeholder="Version" />
+						</div>
+						<div class="col-sm-6">
+							<select class=" form-control">
+								<option style="display: none;" selected>Aufbau</option>
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</section>
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<div class="input-group">
+								<span class="input-group-addon"
+									onclick="$('#dayOfErstzulassung').focus();"><i
+									class="fa fa-calendar"></i></span>
+								<div datetimepicker="" maxdate={{newdate}}>
+									<input type="text" placeholder="DD.MM.YYYY" readonly="readonly"
+										name="dayOfErstzulassung" class="form-control"
+										data-date-format="DD.MM.YYYY">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<select class=" form-control">
+								<option style="display: none;" selected>Klimatisierung</option>
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</section>
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<input type="Number" placeholder="Kilometer" />
+						</div>
+						<div class="col-sm-6">
+							<select class=" form-control">
+								<option style="display: none;" selected>Innenausstattung</option>
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</section>
+
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<input type="Number" placeholder="Leistung" />
+						</div>
+
+						<div class="col-sm-6">
+							<select class=" form-control">
+								<option style="display: none;" selected>Farbe</option>
+								<option value="">rot</option>
+								<option value="">gelb</option>
+								<option value="">blau</option>
+							</select>
+						</div>
+					</div>
+				</section>
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<select class=" form-control">
+								<option style="display: none;" selected>Getriebe</option>
+								<option value=""></option>
+							</select>
+						</div>
+						<div class="col-sm-6">
+							<select class=" form-control">
+								<option style="display: none;" selected>Kraftstoff</option>
+								<option value="">Diesel</option>
+								<option value="">Benzin</option>
+								<option value="">Gas</option>
+							</select>
+						</div>
+					</div>
+				</section>
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> Scheckheftgepflegt
+						</div>
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> Metallic
+						</div>
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> Unfallfrei
+						</div>
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> 1. Hand
+						</div>
+					</div>
+				</section>
+			</fieldset>
+		</fieldset>
+		<br>
+		<fieldset class="custom-customer-area padding-10">
+			<label class="control-label col-sm-12 title-color no-padding center" >Ausstattung wählen</label>
+			<fieldset class="border-area">
+				<section class="col-sm-12 no-padding-left-right">
+					<div class="col-sm-12">
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> ABS
+							<br>
+							<input type="checkbox" /><i></i> Abstandstempomat
+							<br>
+							<input type="checkbox" /><i></i> Allrad
+							<br>
+							<input type="checkbox" /><i></i> Anhängerkupplung
+							<br>
+							<input type="checkbox" /><i></i> Automatisches Einparken
+							<br>
+							<input type="checkbox" /><i></i> Bluetooth
+							<br>
+							<input type="checkbox" /><i></i> Bordcomputer
+							<br>
+							<input type="checkbox" /><i></i> Elektr. Fensterheber
+							<br>
+							<input type="checkbox" /><i></i> Elektr. Seitenspiegel
+							<br>
+							<input type="checkbox" /><i></i> Elektr. Sitzeinstellung
+							<br>
+							<input type="checkbox" /><i></i> ESP
+							<br>
+							<input type="checkbox" /><i></i> Freisprecheinrichtung
+						</div>
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> Hand-Up Display
+							<br>
+							<input type="checkbox" /><i></i> Keyless Entry
+							<br>
+							<input type="checkbox" /><i></i> Kurvenlicht
+							<br>
+							<input type="checkbox" /><i></i> LED-Scheinwerfer
+							<br>
+							<input type="checkbox" /><i></i> Leichtmetallfelgen
+							<br>
+							<input type="checkbox" /><i></i> Lichtsensor
+							<br>
+							<input type="checkbox" /><i></i> MP3-Schnittstelle
+							<br>
+							<input type="checkbox" /><i></i> Multifunktionslenkrad
+							<br>
+							<input type="checkbox" /><i></i> Navigationssystem
+							<br>
+							<input type="checkbox" /><i></i> Nebelscheinwerfer
+							<br>
+							<input type="checkbox" /><i></i> Nichtraucher Fahrzeug
+							<br>
+							<input type="checkbox" /><i></i> Notbremsassistent
+							
+						</div>
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> Panoramadach
+							<br>
+							<input type="checkbox" /><i></i> Partikelfilter
+							<br>
+							<input type="checkbox" /><i></i> Radio
+							<br>
+							<input type="checkbox" /><i></i> Regensensor
+							<br>
+							<input type="checkbox" /><i></i> Rückfahrkamera
+							<br>
+							<input type="checkbox" /><i></i> Partikelfilter
+							<br>
+							<input type="checkbox" /><i></i> Schiebedach
+							<br>
+							<input type="checkbox" /><i></i> Servolenkung
+							<br>
+							<input type="checkbox" /><i></i> Sitzbelüftung
+							<br>
+							<input type="checkbox" /><i></i> Sitzheizung
+							<br>
+							<input type="checkbox" /><i></i> Skisack
+							<br>
+							<input type="checkbox" /><i></i> Sportfahrwerk
+							<br>
+							<input type="checkbox" /><i></i> Sportpaket
+							
+						</div>
+						<div class="col-sm-3">
+							<input type="checkbox" /><i></i> Sportsitze
+							<br>
+							<input type="checkbox" /><i></i> Spurhalteassistent
+							<br>
+							<input type="checkbox" /><i></i> Standheizung
+							<br>
+							<input type="checkbox" /><i></i> Start/Stop-Automatik
+							<br>
+							<input type="checkbox" /><i></i> Tagfahrlicht
+							<br>
+							<input type="checkbox" /><i></i> Tempomat
+							<br>
+							<input type="checkbox" /><i></i> Traktionskontrolle
+							<br>
+							<input type="checkbox" /><i></i> Wegfahrsperre
+							<br>
+							<input type="checkbox" /><i></i> Xenonscheinwerfer
+							<br>
+							<input type="checkbox" /><i></i> Zentralverriegelung
+						</div>
+					</div>
+				</section>
+			</fieldset>
+		</fieldset>
+		<section class="col-lg-12 no-padding-left-right padding-top18">
+			<button type="submit" value=""
+				class="btn btn-primary  no-margin pull-right "
+				ng-click="closeInzahlungnahme()">
+				Weiter <i class='fa fa-angle-double-right'></i>
+			</button>
+		</section>
+	</fieldset>
+</div>
+
